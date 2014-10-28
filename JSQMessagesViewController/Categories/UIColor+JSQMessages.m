@@ -46,6 +46,23 @@
                            alpha:1.0f];
 }
 
++ (UIColor *)jsq_messageBubbleLightBlueColor
+{
+    return [UIColor colorWithRed:137/255.f green:214/255.f blue:250/255.f alpha:1];
+}
+
++ (UIColor *)jsq_messageBubbleGrayColor
+{
+    return [UIColor colorWithRed:230/255.f green:230/255.f blue:230/255.f alpha:1];
+}
+
++ (UIColor *)jsq_messageBackgroundGrayColor
+{
+    return [UIColor colorWithRed:242.f/255 green:242.f/255 blue:242.f/255 alpha:1];
+}
+
+
+
 #pragma mark - Utilities
 
 - (UIColor *)jsq_colorByDarkeningColorWithValue:(CGFloat)value

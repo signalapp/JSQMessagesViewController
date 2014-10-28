@@ -37,6 +37,22 @@
  */
 + (UIColor *)jsq_messageBubbleLightGrayColor;
 
+/**
+ *  @return A color object containing HSB values similar to Signal gray bubble color.
+ */
++ (UIColor *)jsq_messageBubbleGrayColor;
+
+/**
+ *  @return A color object containing HSB values similar to Signal light blue bubble color.
+ */
++ (UIColor *)jsq_messageBubbleLightBlueColor;
+
+/**
+ *  @return A color object containing HSB values similar to Signal background gray color.
+ */
++ (UIColor *)jsq_messageBackgroundGrayColor;
+
+
 #pragma mark - Utilities
 
 /**
