@@ -24,6 +24,7 @@
 
 #import "UIView+JSQMessages.h"
 #import "UIDevice+JSQMessages.h"
+#import "UIColor+JSQMessages.h"
 
 
 @interface JSQMessagesCollectionViewCell ()
@@ -96,8 +97,8 @@
     [self.messageBubbleContainerView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.avatarContainerView setTranslatesAutoresizingMaskIntoConstraints:NO];
     
-    self.backgroundColor = [UIColor whiteColor];
-    
+    //Signal: Background color
+    self.backgroundColor = [UIColor jsq_messageBackgroundGrayColor];
     self.cellTopLabelHeightConstraint.constant = 0.0f;
     self.messageBubbleTopLabelHeightConstraint.constant = 0.0f;
     self.cellBottomLabelHeightConstraint.constant = 0.0f;
