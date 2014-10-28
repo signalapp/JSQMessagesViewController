@@ -43,8 +43,7 @@
 {
     [self setTranslatesAutoresizingMaskIntoConstraints:NO];
     
-    //Signal: Background color
-    self.backgroundColor = [UIColor jsq_messageBackgroundGrayColor];
+    self.backgroundColor = [UIColor whiteColor];
     self.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
     self.alwaysBounceVertical = YES;
     self.bounces = YES;
