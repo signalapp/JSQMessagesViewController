@@ -20,6 +20,13 @@
 
 #import "JSQMessageData.h"
 
+
+typedef enum : NSUInteger {
+    kMessageSent,
+    kMessageRead,
+    kMessageReceived,
+} MessageStatus;
+
 /**
  *  The `JSQMessage` class is an abstract base class for message model objects that represents a single user message.
  *  It contains the senderId, senderDisplayName, and the date that the message was sent. 
@@ -51,6 +58,8 @@
  *  The default value is `NO`, meaning that is message contains text, not media.
  */
 @property (assign, nonatomic, readonly) BOOL isMediaMessage;
+
+@property (nonatomic) MessageStatus* status;
 
 #pragma mark - Initialization
 

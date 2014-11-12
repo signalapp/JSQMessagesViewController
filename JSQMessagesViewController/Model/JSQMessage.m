@@ -18,6 +18,7 @@
 
 #import "JSQMessage.h"
 
+
 @implementation JSQMessage
 
 #pragma mark - Initialization
@@ -53,6 +54,7 @@
     _senderId = nil;
     _senderDisplayName = nil;
     _date = nil;
+    _status = nil;
 }
 
 #pragma mark - NSObject
