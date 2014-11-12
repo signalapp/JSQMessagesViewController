@@ -59,7 +59,7 @@ typedef enum : NSUInteger {
  */
 @property (assign, nonatomic, readonly) BOOL isMediaMessage;
 
-@property (nonatomic) MessageStatus* status;
+@property (nonatomic) MessageStatus status;
 
 #pragma mark - Initialization
 
