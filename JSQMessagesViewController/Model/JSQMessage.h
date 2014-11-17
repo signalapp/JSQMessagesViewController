@@ -22,6 +22,7 @@
 
 
 typedef enum : NSUInteger {
+    kMessageNone,
     kMessageSent,
     kMessageRead,
     kMessageReceived,

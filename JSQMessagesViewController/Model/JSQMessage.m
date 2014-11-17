@@ -54,7 +54,7 @@
     _senderId = nil;
     _senderDisplayName = nil;
     _date = nil;
-    _status = nil;
+    _status = kMessageNone;
 }
 
 #pragma mark - NSObject
