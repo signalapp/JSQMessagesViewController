@@ -41,4 +41,7 @@
  */
 + (UIButton *)defaultSendButtonItem;
 
+
++ (UIButton *)signalCallButtonItem;
+
 @end
