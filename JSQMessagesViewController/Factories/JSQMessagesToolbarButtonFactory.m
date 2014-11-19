@@ -27,7 +27,7 @@
 + (UIButton *)defaultAccessoryButtonItem
 {
     UIImage *accessoryImage = [UIImage jsq_defaultAccessoryImage];
-    UIImage *normalImage = [accessoryImage jsq_imageMaskedWithColor:[UIColor lightGrayColor]];
+    UIImage *normalImage = [accessoryImage jsq_imageMaskedWithColor:[UIColor colorWithRed:0 green:71/255.f blue:1.0f alpha:1.0f]];
     UIImage *highlightedImage = [accessoryImage jsq_imageMaskedWithColor:[UIColor darkGrayColor]];
     
     UIButton *accessoryButton = [[UIButton alloc] initWithFrame:CGRectZero];
@@ -36,7 +36,7 @@
     
     accessoryButton.contentMode = UIViewContentModeScaleAspectFit;
     accessoryButton.backgroundColor = [UIColor clearColor];
-    accessoryButton.tintColor = [UIColor lightGrayColor];
+    //accessoryButton.tintColor = [UIColor lightGrayColor];
     
     return accessoryButton;
 }
@@ -51,7 +51,7 @@
     [sendButton setTitleColor:[[UIColor jsq_messageBubbleBlueColor] jsq_colorByDarkeningColorWithValue:0.1f] forState:UIControlStateHighlighted];
     [sendButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
     
-    sendButton.titleLabel.font = [UIFont boldSystemFontOfSize:17.0f];
+    sendButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:17.0f];
     sendButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     sendButton.titleLabel.minimumScaleFactor = 0.85f;
     sendButton.contentMode = UIViewContentModeCenter;
@@ -63,7 +63,8 @@
 
 + (UIButton *)signalCallButtonItem
 {
-    NSString * sendTitle = @"Call";
+    NSString * sendTitle = NSLocalizedStringFromTable(@"Call", @"JSQMessages", @"Text for the send button on the messages view toolbar");
+    
     UIButton *sendButton = [[UIButton alloc] initWithFrame:CGRectZero];
     [sendButton setTitle:sendTitle forState:UIControlStateNormal];
     [sendButton setTitleColor:[UIColor jsq_messageBubbleBlueColor] forState:UIControlStateNormal];
