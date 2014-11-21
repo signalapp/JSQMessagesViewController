@@ -17,7 +17,7 @@
 //
 
 #import "DemoMessagesViewController.h"
-
+#import "JSQCall.h"
 
 @implementation DemoMessagesViewController
 
@@ -141,7 +141,7 @@
         id<JSQMessageMediaData> newMediaData = nil;
         id newMediaAttachmentCopy = nil;
         
-        if (copyMessage.isMediaMessage) {
+        if ([copyMessage isKindOfClass:[JSQMessage class]]) {
             /**
              *  Last message was a media message
              */
@@ -377,6 +377,8 @@
      */
     JSQMessage *message = [self.demoData.messages objectAtIndex:indexPath.item];
     
+    if (![message isKindOfClass:JSQCall.class]) return nil;
+    
     if ([message.senderId isEqualToString:self.senderId]) {
         if (![NSUserDefaults outgoingAvatarSetting]) {
             return nil;
@@ -387,8 +389,7 @@
             return nil;
         }
     }
-    
-    
+
     return [self.demoData.avatars objectForKey:message.senderId];
 }
 
@@ -467,17 +468,19 @@
     
     JSQMessage *msg = [self.demoData.messages objectAtIndex:indexPath.item];
     
-    if (!msg.isMediaMessage) {
+    
+    if ([msg isKindOfClass:[JSQMessage class]]) {
+        if (!msg.isMediaMessage) {
+            if ([msg.senderId isEqualToString:self.senderId]) {
+                cell.textView.textColor = [UIColor blackColor];
+            }
+            else {
+                cell.textView.textColor = [UIColor whiteColor];
+            }
         
-        if ([msg.senderId isEqualToString:self.senderId]) {
-            cell.textView.textColor = [UIColor blackColor];
-        }
-        else {
-            cell.textView.textColor = [UIColor whiteColor];
-        }
-        
-        cell.textView.linkTextAttributes = @{ NSForegroundColorAttributeName : cell.textView.textColor,
+            cell.textView.linkTextAttributes = @{ NSForegroundColorAttributeName : cell.textView.textColor,
                                               NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle | NSUnderlinePatternSolid) };
+            }
     }
     
     return cell;

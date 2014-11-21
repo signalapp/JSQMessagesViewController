@@ -14,7 +14,7 @@
 
 @interface JSQCallCollectionViewCell : UICollectionViewCell
 
-@property (weak, nonatomic, readonly) JSQMessagesLabel *cellLabel ;
+@property (weak, nonatomic, readonly) JSQMessagesLabel *cellLabel;
 
 #pragma mark - Class methods
 
