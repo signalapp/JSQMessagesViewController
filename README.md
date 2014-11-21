@@ -2,9 +2,9 @@
 
 [![Build Status](https://secure.travis-ci.org/jessesquires/JSQMessagesViewController.svg)](http://travis-ci.org/jessesquires/JSQMessagesViewController) [![Version Status](http://img.shields.io/cocoapods/v/JSQMessagesViewController.png)][docsLink] [![license MIT](http://img.shields.io/badge/license-MIT-orange.png)][mitLink]
 
-### Update: 6.0-beta6 is out! See [#476](https://github.com/jessesquires/JSQMessagesViewController/issues/476) for details.
+![Screenshot0][img0] &nbsp;&nbsp; ![Screenshot1][img1] &nbsp;&nbsp; 
 
-![Messages Screenshot 1][img1] &nbsp;&nbsp;&nbsp; ![Messages Screenshot 2][img2]
+![Screenshot2][img2] &nbsp;&nbsp; ![Screenshot3][img3]
 
 > More screenshots available at [CocoaControls](https://www.cocoacontrols.com/controls/jsqmessagesviewcontroller)
 
@@ -31,11 +31,21 @@ git checkout iOS6_support_stable
 
 ## Installation
 
-````
-pod 'JSQMessagesViewController'
+````ruby
+# For latest release in cocoapods
+pod 'JSQMessagesViewController'  
+
+# Feeling adventurous? Get the latest on develop
+pod 'JSQMessagesViewController', :git => 'https://github.com/jessesquires/JSQMessagesViewController.git', :branch => 'develop'
+
+# For version 5.3.2
+pod 'JSQMessagesViewController', :git => 'https://github.com/jessesquires/JSQMessagesViewController', :branch => 'version_5.3.2_patch'
+
+# For iOS 6 support
+pod 'JSMessagesViewController', :git => 'https://github.com/jessesquires/JSQMessagesViewController.git', :branch => 'iOS6_support_stable'
 ````
 
-Otherwise, drag the `JSQMessagesViewController/` folder to your project. Install [`JSQSystemSoundPlayer`][playerLink] and add the `QuartzCore.framework`.
+Otherwise, drag the `JSQMessagesViewController/` folder to your project and install [`JSQSystemSoundPlayer`][playerLink].
 
 >**NOTE:**
 >
@@ -43,35 +53,82 @@ Otherwise, drag the `JSQMessagesViewController/` folder to your project. Install
 >
 >And this pod was formerly named `JSMessagesViewController`.
 
-For iOS 6.0 support:
-````
-pod 'JSMessagesViewController', :git => 'https://github.com/jessesquires/JSQMessagesViewController.git', :branch => 'iOS6_support_stable'
-````
-
 ## Getting Started
 
-````
+````objective-c
 #import <JSQMessagesViewController/JSQMessages.h>    // import all the things
 ````
 
-* **Demo project**
+* **Demo Project**
   * There's a fucking sweet demo project: `JSQMessages.xcworkspace`.
   * Run `pod install` first.
 
-* **Model**
-  * Your model objects should conform to the `JSQMessageData` protocol.
+* **Message Model**
+  * Your message model objects should conform to the `JSQMessageData` protocol.
+  * However, you may use the provided `JSQMessage` class.
+   
+* **Media Attachment Model**
   * Your media attachment model objects should conform to the `JSQMessageMediaData` protocol.
-  * However, you may use the provided classes:
-    * Model: `JSQTextMessage` and `JSQMediaMessage`
-    * Media attachments: `JSQPhotoMediaItem`, `JSQLocationMediaItem`, `JSQVideoMediaItem`
- 
+  * However, you may use the provided classes: `JSQPhotoMediaItem`, `JSQLocationMediaItem`, `JSQVideoMediaItem`.
+  * Creating your own custom media items is easy! Simply follow the pattern used by the built-in media types.
+  * Also see `JSQMessagesMediaViewBubbleImageMasker` for masking your custom media views as message bubbles.
+
+* **Avatar Model**
+  * Your avatar model objects should conform to the `JSQMessageAvatarImageDataSource` protocol.
+  * However, you may use the provided `JSQMessagesAvatarImage` class.
+  * Also see `JSQMessagesAvatarImageFactory` for easily generating custom avatars.
+
+* **Message Bubble Model**
+  * Your message bubble model objects should conform to the `JSQMessageBubbleImageDataSource` protocol.
+  * However, you may use the provided `JSQMessagesBubbleImage` class.
+  * Also see `JSQMessagesBubbleImageFactory` and `UIImage+JSQMessages.h` for easily generating custom bubbles.
+
 * **View Controller**
   * Subclass `JSQMessagesViewController`.
   * Implement the required methods in the `JSQMessagesCollectionViewDataSource` protocol.
   * Implement the required methods in the `JSQMessagesCollectionViewDelegateFlowLayout` protocol.
+  * Set your `senderId` and `senderDisplayName`. These properties correspond to the methods found in `JSQMessageData` and determine which messages are incoming or outgoing.
 
 * **Customizing**
-  * The demo project is well-commented. This should help you configure your view however you like.
+  * The demo project is well-commented. Please use this as a guide.
+
+## Quick Tips and FAQs
+
+*Springy bubbles?*
+````objective-c
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.collectionView.collectionViewLayout.springinessEnabled = YES;
+}
+````
+
+*Remove avatars?*
+````objective-c
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSizeZero;
+    self.collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero;
+}
+
+- (id<JSQMessageAvatarImageDataSource>)collectionView:(JSQMessagesCollectionView *)collectionView avatarImageDataForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return nil;
+}
+````
+
+*Further customize your cells*
+````objective-c
+- (UICollectionViewCell *)collectionView:(JSQMessagesCollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    JSQMessagesCollectionViewCell *cell = (JSQMessagesCollectionViewCell *)[super collectionView:collectionView cellForItemAtIndexPath:indexPath];
+    
+    // Customize all the things!
+    
+    return cell;
+}
+````
 
 ## Documentation
 
@@ -134,6 +191,7 @@ Feel free to check out my work at [Hexed Bits](http://bit.ly/0x29A), or read [my
 * [AwesomeChat](https://github.com/relatedcode/AwesomeChat)
 * [ParseChat](https://github.com/relatedcode/ParseChat)
 * [Jib](http://jibapp.com)
+* [Onvolo](https://itunes.apple.com/us/app/onvolo/id869332351)
 * *Your app here*
 
 ## License
@@ -148,5 +206,7 @@ Feel free to check out my work at [Hexed Bits](http://bit.ly/0x29A), or read [my
 [mitLink]:http://opensource.org/licenses/MIT
 [playerLink]:https://github.com/jessesquires/JSQSystemSoundPlayer
 
-[img1]:https://raw.githubusercontent.com/jessesquires/JSQMessagesViewController/develop/Screenshots/screenshot0.png
-[img2]:https://raw.githubusercontent.com/jessesquires/JSQMessagesViewController/develop/Screenshots/screenshot1.png
+[img0]:https://raw.githubusercontent.com/jessesquires/JSQMessagesViewController/develop/Screenshots/screenshot0.png
+[img1]:https://raw.githubusercontent.com/jessesquires/JSQMessagesViewController/develop/Screenshots/screenshot1.png
+[img2]:https://raw.githubusercontent.com/jessesquires/JSQMessagesViewController/develop/Screenshots/screenshot2.png
+[img3]:https://raw.githubusercontent.com/jessesquires/JSQMessagesViewController/develop/Screenshots/screenshot3.png
