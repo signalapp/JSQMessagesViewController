@@ -56,18 +56,16 @@
             return nil;
             break;
         case kCallFailed:
-            return [NSString stringWithFormat:@"Failed call - %@", [[JSQMessagesTimestampFormatter sharedFormatter] timestampForDate:_date]];
+            return [NSString stringWithFormat:@"Your call to %@ failed.",_senderDisplayName];
             break;
         case kCallMissed:
-            return [NSString stringWithFormat:@"Missed call - %@", [[JSQMessagesTimestampFormatter sharedFormatter] timestampForDate:_date]];
+            return [NSString stringWithFormat:@"You missed a call from %@.", _senderDisplayName];
             break;
         case kCallIncoming:
-            return [NSString stringWithFormat:@"Outgoing call (%d:%2ld) - %@", (int)((_duration - _duration%60)/(60)), _duration%60
-                    ,[[JSQMessagesTimestampFormatter sharedFormatter] timestampForDate:_date]];
+            return [NSString stringWithFormat:@"You called %@.", _senderDisplayName];
             break;
         case kCallOutgoing:
-            return [NSString stringWithFormat:@"Outgoing call (%d:%2ld) - %@", (int)((_duration - _duration%60)/(60)), _duration%60
-                    ,[[JSQMessagesTimestampFormatter sharedFormatter] timestampForDate:_date]];
+            return [NSString stringWithFormat:@"You received a call from %@.", _senderDisplayName];
             break;
             
         default:
@@ -75,6 +73,7 @@
             break;
     }
 }
+
 
 #pragma mark - NSObject
 

@@ -436,10 +436,14 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     NSString *cellIdentifier = nil;
     
     if (isCall) {
-        
+        JSQCall * call = (JSQCall*)messageItem;
         cellIdentifier = self.callCellIndentifier;
         JSQCallCollectionViewCell * callCell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-        callCell.cellLabel.text = [(JSQCall*)messageItem text];
+        callCell.cellLabel.text = [call text];
+        if (call.status == kCallFailed || call.status == kCallMissed)
+        {
+            callCell.cellLabel.textColor = [UIColor redColor];
+        }
         callCell.layer.shouldRasterize = YES;
         callCell.layer.rasterizationScale = [UIScreen mainScreen].scale;
         return callCell;

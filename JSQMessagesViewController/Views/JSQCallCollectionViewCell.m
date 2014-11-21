@@ -46,8 +46,8 @@
     self.cellLabelHeightConstraint.constant = 0.0f;
     
     self.cellLabel.textAlignment = NSTextAlignmentCenter;
-    self.cellLabel.font = [UIFont boldSystemFontOfSize:15.0f];
-    self.cellLabel.textColor = [UIColor blueColor];
+    self.cellLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];
+    self.cellLabel.textColor = [UIColor lightGrayColor];
 }
 
 -(void)dealloc
@@ -70,7 +70,7 @@
     [super applyLayoutAttributes:layoutAttributes];
     
     [self jsq_updateConstraint:self.cellLabelHeightConstraint
-                  withConstant:30.0f];
+                  withConstant:kCallCellHeight];
     
 }
 

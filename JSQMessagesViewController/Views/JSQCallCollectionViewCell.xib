@@ -8,16 +8,16 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Efo-Hk-7Hw" customClass="JSQCallCollectionViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEr-eC-P6i" customClass="JSQMessagesLabel">
-                        <rect key="frame" x="8" y="4" width="304" height="30"/>
+                        <rect key="frame" x="8" y="0.0" width="304" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="7nw-w2-91p"/>
+                            <constraint firstAttribute="height" constant="20" id="7nw-w2-91p"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -28,14 +28,15 @@
             </view>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="YEr-eC-P6i" secondAttribute="trailing" constant="8" id="Hj7-z5-WMM"/>
-                <constraint firstItem="YEr-eC-P6i" firstAttribute="top" secondItem="Efo-Hk-7Hw" secondAttribute="top" constant="4" id="rEI-cY-6lx"/>
+                <constraint firstItem="YEr-eC-P6i" firstAttribute="top" secondItem="Efo-Hk-7Hw" secondAttribute="top" id="rEI-cY-6lx"/>
                 <constraint firstItem="YEr-eC-P6i" firstAttribute="leading" secondItem="Efo-Hk-7Hw" secondAttribute="leading" constant="8" id="uNd-aK-1hE"/>
             </constraints>
+            <size key="customSize" width="320" height="20"/>
             <connections>
                 <outlet property="cellLabel" destination="YEr-eC-P6i" id="jii-8O-zLL"/>
                 <outlet property="cellLabelHeightConstraint" destination="7nw-w2-91p" id="3IA-T6-4Eo"/>
             </connections>
-            <point key="canvasLocation" x="219" y="456"/>
+            <point key="canvasLocation" x="219" y="451"/>
         </collectionViewCell>
     </objects>
 </document>
