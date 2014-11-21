@@ -20,6 +20,7 @@
 
 #import "NSUserDefaults+DemoSettings.h"
 
+#import "JSQCall.h"
 
 /**
  *  This is for demo/testing purposes only.
@@ -99,6 +100,11 @@
      *  You should have a mutable array or orderedSet, or something.
      */
     self.messages = [[NSMutableArray alloc] initWithObjects:
+                     [[JSQCall alloc] initWithCallerId:kJSQDemoAvatarIdWoz
+                                     callerDisplayName:kJSQDemoAvatarDisplayNameWoz
+                                                  date:[NSDate date]
+                                              duration:142
+                                                status:kCallOutgoing],
                      [[JSQTextMessage alloc] initWithSenderId:kJSQDemoAvatarIdSquires
                                             senderDisplayName:kJSQDemoAvatarDisplayNameSquires
                                                          date:[NSDate distantPast]
@@ -128,6 +134,22 @@
                                             senderDisplayName:kJSQDemoAvatarDisplayNameSquires
                                                          date:[NSDate date]
                                                          text:@"Now with media messages!"],
+                     [[JSQCall alloc] initWithCallerId:kJSQDemoAvatarIdWoz
+                                     callerDisplayName:kJSQDemoAvatarDisplayNameWoz
+                                                  date:[NSDate date]
+                                              duration:127
+                                                status:kCallIncoming],
+                     [[JSQCall alloc] initWithCallerId:kJSQDemoAvatarIdWoz
+                                     callerDisplayName:kJSQDemoAvatarDisplayNameWoz
+                                                  date:[NSDate date]
+                                              duration:0
+                                                status:kCallMissed],
+                     [[JSQCall alloc] initWithCallerId:kJSQDemoAvatarIdWoz
+                                     callerDisplayName:kJSQDemoAvatarDisplayNameWoz
+                                                  date:[NSDate date]
+                                              duration:0
+                                                status:kCallFailed],
+
                      nil];
     
     [self addPhotoMediaMessage];

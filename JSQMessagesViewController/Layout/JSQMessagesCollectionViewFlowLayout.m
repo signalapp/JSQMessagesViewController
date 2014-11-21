@@ -33,6 +33,9 @@
 
 #import "UIImage+JSQMessages.h"
 
+#import "JSQCall.h"
+#import "JSQCallCollectionViewCell.h"
+
 
 const CGFloat kJSQMessagesCollectionViewCellLabelHeightDefault = 20.0f;
 const CGFloat kJSQMessagesCollectionViewAvatarSizeDefault = 30.0f;
@@ -423,38 +426,44 @@ const CGFloat kJSQMessagesCollectionViewAvatarSizeDefault = 30.0f;
     id<JSQMessageData> messageItem = [self.collectionView.dataSource collectionView:self.collectionView messageDataForItemAtIndexPath:indexPath];
     CGSize finalSize = CGSizeZero;
     
-    if ([messageItem isMediaMessage]) {
-        finalSize = [[messageItem media] mediaViewDisplaySize];
-    }
-    else {
-        CGSize avatarSize = [self jsq_avatarSizeForIndexPath:indexPath];
+    if (![messageItem isKindOfClass:[JSQCall class]]) {
+        if ([messageItem isMediaMessage]) {
+            finalSize = [[messageItem media] mediaViewDisplaySize];
+        }
+        else {
+            CGSize avatarSize = [self jsq_avatarSizeForIndexPath:indexPath];
         
-        //  from the cell xibs, there is a 2 point space between avatar and bubble
-        CGFloat spacingBetweenAvatarAndBubble = 2.0f;
-        CGFloat horizontalContainerInsets = self.messageBubbleTextViewTextContainerInsets.left + self.messageBubbleTextViewTextContainerInsets.right;
-        CGFloat horizontalFrameInsets = self.messageBubbleTextViewFrameInsets.left + self.messageBubbleTextViewFrameInsets.right;
+            //  from the cell xibs, there is a 2 point space between avatar and bubble
+            CGFloat spacingBetweenAvatarAndBubble = 2.0f;
+            CGFloat horizontalContainerInsets = self.messageBubbleTextViewTextContainerInsets.left + self.messageBubbleTextViewTextContainerInsets.right;
+            CGFloat horizontalFrameInsets = self.messageBubbleTextViewFrameInsets.left + self.messageBubbleTextViewFrameInsets.right;
         
-        CGFloat horizontalInsetsTotal = horizontalContainerInsets + horizontalFrameInsets + spacingBetweenAvatarAndBubble;
-        CGFloat maximumTextWidth = self.itemWidth - avatarSize.width - self.messageBubbleLeftRightMargin - horizontalInsetsTotal;
+            CGFloat horizontalInsetsTotal = horizontalContainerInsets + horizontalFrameInsets + spacingBetweenAvatarAndBubble;
+            CGFloat maximumTextWidth = self.itemWidth - avatarSize.width - self.messageBubbleLeftRightMargin - horizontalInsetsTotal;
         
-        CGRect stringRect = [[messageItem text] boundingRectWithSize:CGSizeMake(maximumTextWidth, CGFLOAT_MAX)
+            CGRect stringRect = [[messageItem text] boundingRectWithSize:CGSizeMake(maximumTextWidth, CGFLOAT_MAX)
                                                              options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading)
                                                           attributes:@{ NSFontAttributeName : self.messageBubbleFont }
                                                              context:nil];
         
-        CGSize stringSize = CGRectIntegral(stringRect).size;
+            CGSize stringSize = CGRectIntegral(stringRect).size;
         
-        CGFloat verticalContainerInsets = self.messageBubbleTextViewTextContainerInsets.top + self.messageBubbleTextViewTextContainerInsets.bottom;
-        CGFloat verticalFrameInsets = self.messageBubbleTextViewFrameInsets.top + self.messageBubbleTextViewFrameInsets.bottom;
+            CGFloat verticalContainerInsets = self.messageBubbleTextViewTextContainerInsets.top + self.messageBubbleTextViewTextContainerInsets.bottom;
+            CGFloat verticalFrameInsets = self.messageBubbleTextViewFrameInsets.top + self.messageBubbleTextViewFrameInsets.bottom;
         
         //  add extra 2 points of space, because `boundingRectWithSize:` is slightly off
         //  not sure why. magix. (shrug) if you know, submit a PR
-        CGFloat verticalInsets = verticalContainerInsets + verticalFrameInsets + 2.0f;
+            CGFloat verticalInsets = verticalContainerInsets + verticalFrameInsets + 2.0f;
         
         //  same as above, an extra 2 points of magix
-        CGFloat finalWidth = MAX(stringSize.width + horizontalInsetsTotal, self.bubbleImageAssetWidth) + 2.0f;
+            CGFloat finalWidth = MAX(stringSize.width + horizontalInsetsTotal, self.bubbleImageAssetWidth) + 2.0f;
         
-        finalSize = CGSizeMake(finalWidth, stringSize.height + verticalInsets);
+            finalSize = CGSizeMake(finalWidth, stringSize.height + verticalInsets);
+        }
+    }
+    else
+    {
+        finalSize = CGSizeMake(kCallCellWidth, kCallCellHeight);
     }
     
     [self.messageBubbleSizes setObject:[NSValue valueWithCGSize:finalSize] forKey:indexPath];

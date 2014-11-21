@@ -17,6 +17,7 @@ typedef enum : NSUInteger {
     kCallFailed
 } CallStatus;
 
+
 @interface JSQCall : NSObject <JSQMessageData, NSCoding, NSCopying>
 
 /*
@@ -54,5 +55,7 @@ typedef enum : NSUInteger {
                             date:(NSDate *)date
                         duration:(long)durationInSeconds
                           status:(CallStatus)status;
+
+-(NSString*)text;
 
 @end

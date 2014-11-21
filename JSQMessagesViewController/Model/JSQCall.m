@@ -7,6 +7,8 @@
 
 #import "JSQCall.h"
 
+#import "JSQMessagesTimestampFormatter.h"
+
 @implementation JSQCall
 
 #pragma mark - Initialzation
@@ -34,7 +36,7 @@
 
 -(id)init
 {
-    NSAssert(NO,@"%s is not a valid initializer for %@. Use %@ instead", __PRETTY_FUNCTION__, [self class], NSStringFromSelector(@selector(initWithsenderId:senderDisplayName:date:duration:status:)));
+    NSAssert(NO,@"%s is not a valid initializer for %@. Use %@ instead", __PRETTY_FUNCTION__, [self class], NSStringFromSelector(@selector(initWithCallerId:callerDisplayName:date:duration:status:)));
     return nil;
 }
 
@@ -47,7 +49,35 @@
     _status = kCallNone;
 }
 
+-(NSString*)text
+{
+    switch (self.status) {
+        case kCallNone:
+            return nil;
+            break;
+        case kCallFailed:
+            return [NSString stringWithFormat:@"Failed call - %@", [[JSQMessagesTimestampFormatter sharedFormatter] timestampForDate:_date]];
+            break;
+        case kCallMissed:
+            return [NSString stringWithFormat:@"Missed call - %@", [[JSQMessagesTimestampFormatter sharedFormatter] timestampForDate:_date]];
+            break;
+        case kCallIncoming:
+            return [NSString stringWithFormat:@"Outgoing call (%d:%2ld) - %@", (int)((_duration - _duration%60)/(60)), _duration%60
+                    ,[[JSQMessagesTimestampFormatter sharedFormatter] timestampForDate:_date]];
+            break;
+        case kCallOutgoing:
+            return [NSString stringWithFormat:@"Outgoing call (%d:%2ld) - %@", (int)((_duration - _duration%60)/(60)), _duration%60
+                    ,[[JSQMessagesTimestampFormatter sharedFormatter] timestampForDate:_date]];
+            break;
+            
+        default:
+            return nil;
+            break;
+    }
+}
+
 #pragma mark - NSObject
+
 -(BOOL)isEqual:(id)object
 {
     if (self==object) {

@@ -42,6 +42,9 @@
 #import "UIColor+JSQMessages.h"
 #import "UIDevice+JSQMessages.h"
 
+#import "JSQCall.h"
+#import "JSQCallCollectionViewCell.h"
+
 static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObservingContext;
 
 
@@ -141,6 +144,8 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     
     self.incomingCellIdentifier = [JSQMessagesCollectionViewCellIncoming cellReuseIdentifier];
     self.incomingMediaCellIdentifier = [JSQMessagesCollectionViewCellIncoming mediaCellReuseIdentifier];
+    
+    self.callCellIndentifier = [JSQCallCollectionViewCell cellReuseIdentifier];
     
     self.showTypingIndicator = NO;
     
@@ -405,13 +410,25 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     NSParameterAssert(messageSenderId != nil);
     
     BOOL isOutgoingMessage = [messageSenderId isEqualToString:self.senderId];
-    BOOL isMediaMessage = [messageItem isMediaMessage];
+    BOOL isCall = [messageItem isKindOfClass:[JSQCall class]];
+    BOOL isMediaMessage = isCall ? NO : [messageItem isMediaMessage];
     
     NSString *cellIdentifier = nil;
-    if (isMediaMessage) {
+    
+    if (isCall) {
+        
+        cellIdentifier = self.callCellIndentifier;
+        JSQCallCollectionViewCell * callCell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+        callCell.cellLabel.text = [(JSQCall*)messageItem text];
+        callCell.layer.shouldRasterize = YES;
+        callCell.layer.rasterizationScale = [UIScreen mainScreen].scale;
+        return callCell;
+        
+    } else if (isMediaMessage) {
+    
         cellIdentifier = isOutgoingMessage ? self.outgoingMediaCellIdentifier : self.incomingMediaCellIdentifier;
-    }
-    else {
+    } else {
+        
         cellIdentifier = isOutgoingMessage ? self.outgoingCellIdentifier : self.incomingCellIdentifier;
     }
     
