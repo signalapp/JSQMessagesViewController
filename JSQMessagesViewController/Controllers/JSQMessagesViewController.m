@@ -48,7 +48,6 @@
 static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObservingContext;
 
 
-
 @interface JSQMessagesViewController () <JSQMessagesInputToolbarDelegate,
                                          JSQMessagesKeyboardControllerDelegate>
 
