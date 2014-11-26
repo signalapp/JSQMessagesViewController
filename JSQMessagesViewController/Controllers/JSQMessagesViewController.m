@@ -265,6 +265,7 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     [super viewDidDisappear:animated];
     [self jsq_removeObservers];
     [self.keyboardController endListeningForKeyboard];
+    [self jsq_setToolbarBottomLayoutGuideConstant:0.0f];
 }
 
 - (void)didReceiveMemoryWarning
@@ -486,8 +487,16 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     if (needsAvatar) {
         avatarImageDataSource = [collectionView.dataSource collectionView:collectionView avatarImageDataForItemAtIndexPath:indexPath];
         if (avatarImageDataSource != nil) {
-            cell.avatarImageView.image = [avatarImageDataSource avatarImage] ?: [avatarImageDataSource avatarPlaceholderImage];
-            cell.avatarImageView.highlightedImage = [avatarImageDataSource avatarHighlightedImage];
+            
+            UIImage *avatarImage = [avatarImageDataSource avatarImage];
+            if (avatarImage == nil) {
+                cell.avatarImageView.image = [avatarImageDataSource avatarPlaceholderImage];
+                cell.avatarImageView.highlightedImage = nil;
+            }
+            else {
+                cell.avatarImageView.image = avatarImage;
+                cell.avatarImageView.highlightedImage = [avatarImageDataSource avatarHighlightedImage];
+            }
         }
     }
     

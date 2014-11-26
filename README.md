@@ -22,7 +22,7 @@ See the [website](http://www.jessesquires.com/JSQMessagesViewController/) for th
 * iOS 7.0+
 * ARC
 
-*Need support for iOS 6? [You shouldn't](http://www.macrumors.com/2014/07/14/apple-ios-7-adoption-90-percent/). But, there's a branch for that!*
+*Need support for iOS 6? [You shouldn't](http://www.macrumors.com/2014/11/11/ios8-56-percent-adoption/). But, there's a branch for that!*
 ````
 git checkout iOS6_support_stable
 ````
@@ -92,7 +92,7 @@ Otherwise, drag the `JSQMessagesViewController/` folder to your project and inst
 * **Customizing**
   * The demo project is well-commented. Please use this as a guide.
 
-## Quick Tips and FAQs
+## Quick Tips
 
 *Springy bubbles?*
 ````objective-c
@@ -118,17 +118,22 @@ Otherwise, drag the `JSQMessagesViewController/` folder to your project and inst
 }
 ````
 
-*Further customize your cells*
+*Customize your cells*
 ````objective-c
 - (UICollectionViewCell *)collectionView:(JSQMessagesCollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     JSQMessagesCollectionViewCell *cell = (JSQMessagesCollectionViewCell *)[super collectionView:collectionView cellForItemAtIndexPath:indexPath];
     
-    // Customize all the things!
+    // Customize the shit out of this cell
+    // See the docs for JSQMessagesCollectionViewCell
     
     return cell;
 }
 ````
+
+## Questions & Help
+
+There's [a label](https://github.com/jessesquires/JSQMessagesViewController/labels/questions%20&%20help) for that. Before asking a question, see if it has [already been answered](https://github.com/jessesquires/JSQMessagesViewController/issues?q=label%3A%22questions+%26+help%22+is%3Aclosed).
 
 ## Documentation
 
