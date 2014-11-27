@@ -83,6 +83,11 @@
     return [self jsq_messagesBubbleImageWithColor:color flippedForIncoming:YES];
 }
 
+- (JSQMessagesBubbleImage *)outgoingMessageFailedBubbleImageWithColor:(UIColor *)color
+{
+    return [self jsq_messagesBubbleImageWithColor:color flippedForIncoming:NO];
+}
+
 #pragma mark - Private
 
 - (UIEdgeInsets)jsq_centerPointEdgeInsetsForImageSize:(CGSize)bubbleImageSize
