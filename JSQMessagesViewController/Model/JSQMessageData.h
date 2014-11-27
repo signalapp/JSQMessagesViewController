@@ -98,4 +98,14 @@
  */
 - (BOOL)isMediaMessage;
 
+
+/*
+ * Returns the message's state (eg for Signal : 
+ * TSOutgoingMessageStateAttemptingOut,
+ * TSOutgoingMessageStateUnsent,
+ * TSOutgoingMessageStateSent,
+ * TSOutgoingMessageStateDelivered)
+ */
+- (NSInteger) messageState;
+
 @end
