@@ -105,6 +105,8 @@
 		FC15B7B11A1F6AC800F59801 /* JSQMessagesCollectionViewCellOutgoing.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC15B7AF1A1F6AC800F59801 /* JSQMessagesCollectionViewCellOutgoing.xib */; };
 		FC4FA03A1A1E1BD100DA100A /* JSQCall.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4FA0391A1E1BD100DA100A /* JSQCall.m */; };
 		FC4FA03D1A1E81AF00DA100A /* JSQCallCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4FA03C1A1E81AF00DA100A /* JSQCallCollectionViewCell.m */; };
+		FCFA5E131A29FC1000C8E32E /* JSQDisplayedMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFA5E121A29FC1000C8E32E /* JSQDisplayedMessage.m */; };
+		FCFA5E161A29FE3B00C8E32E /* JSQInfoMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFA5E151A29FE3B00C8E32E /* JSQInfoMessage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -280,6 +282,10 @@
 		FC4FA03B1A1E81AF00DA100A /* JSQCallCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSQCallCollectionViewCell.h; sourceTree = "<group>"; };
 		FC4FA03C1A1E81AF00DA100A /* JSQCallCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSQCallCollectionViewCell.m; sourceTree = "<group>"; };
 		FC5C727E4CCDA2B95A7BA30C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		FCFA5E111A29FC1000C8E32E /* JSQDisplayedMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSQDisplayedMessage.h; sourceTree = "<group>"; };
+		FCFA5E121A29FC1000C8E32E /* JSQDisplayedMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSQDisplayedMessage.m; sourceTree = "<group>"; };
+		FCFA5E141A29FE3B00C8E32E /* JSQInfoMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSQInfoMessage.h; sourceTree = "<group>"; };
+		FCFA5E151A29FE3B00C8E32E /* JSQInfoMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSQInfoMessage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -528,6 +534,10 @@
 				886C33FC19F4371E006B4997 /* JSQVideoMediaItem.m */,
 				FC4FA0381A1E1BD100DA100A /* JSQCall.h */,
 				FC4FA0391A1E1BD100DA100A /* JSQCall.m */,
+				FCFA5E111A29FC1000C8E32E /* JSQDisplayedMessage.h */,
+				FCFA5E121A29FC1000C8E32E /* JSQDisplayedMessage.m */,
+				FCFA5E141A29FE3B00C8E32E /* JSQInfoMessage.h */,
+				FCFA5E151A29FE3B00C8E32E /* JSQInfoMessage.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -837,6 +847,7 @@
 				8885734D19DE55D000E89D20 /* NSUserDefaults+DemoSettings.m in Sources */,
 				883C11781A09FB100092A16D /* JSQMessagesCellTextView.m in Sources */,
 				88A25FB919D8E01A00924534 /* UIView+JSQMessages.m in Sources */,
+				FCFA5E131A29FC1000C8E32E /* JSQDisplayedMessage.m in Sources */,
 				88A25FCA19D8E01A00924534 /* JSQMessagesCollectionView.m in Sources */,
 				88A25FD219D8E01A00924534 /* JSQMessagesLabel.m in Sources */,
 				88445B4019E1B4470014F889 /* JSQLocationMediaItem.m in Sources */,
@@ -866,6 +877,7 @@
 				88A25FB719D8E01A00924534 /* UIColor+JSQMessages.m in Sources */,
 				886C33FD19F4371E006B4997 /* JSQVideoMediaItem.m in Sources */,
 				88A25FBA19D8E01A00924534 /* JSQMessagesKeyboardController.m in Sources */,
+				FCFA5E161A29FE3B00C8E32E /* JSQInfoMessage.m in Sources */,
 				88A25FC019D8E01A00924534 /* JSQMessagesToolbarButtonFactory.m in Sources */,
 				88A25FC219D8E01A00924534 /* JSQMessagesCollectionViewFlowLayoutInvalidationContext.m in Sources */,
 				88A25FE119D8E0C400924534 /* TableViewController.m in Sources */,

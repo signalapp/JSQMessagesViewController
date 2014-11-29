@@ -1,0 +1,28 @@
+//
+//  JSQInfoMessage.h
+//  JSQMessages
+//
+//  Created by Dylan Bourgeois on 29/11/14.
+//  Copyright (c) 2014 Hexed Bits. All rights reserved.
+//
+
+#import "JSQDisplayedMessage.h"
+
+typedef NS_ENUM(NSInteger, JSQInfoMessageType){
+    InfoMessageTypeSessionDidEnd,
+};
+
+@interface JSQInfoMessage : JSQDisplayedMessage
+
+@property (nonatomic) JSQInfoMessageType infoMessageType;
+
+#pragma mark - Initialization
+
+- (instancetype)initWithType:(JSQInfoMessageType)messageType
+                   senderId:(NSString*)senderId
+           senderDisplayName:(NSString*)senderDisplayName
+                        date:(NSDate*)date;
+
+- (NSString*)text;
+
+@end
