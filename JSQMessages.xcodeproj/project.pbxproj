@@ -107,6 +107,7 @@
 		FC4FA03D1A1E81AF00DA100A /* JSQCallCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4FA03C1A1E81AF00DA100A /* JSQCallCollectionViewCell.m */; };
 		FCFA5E131A29FC1000C8E32E /* JSQDisplayedMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFA5E121A29FC1000C8E32E /* JSQDisplayedMessage.m */; };
 		FCFA5E161A29FE3B00C8E32E /* JSQInfoMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFA5E151A29FE3B00C8E32E /* JSQInfoMessage.m */; };
+		FCFA5E191A2A044500C8E32E /* JSQErrorMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFA5E181A2A044500C8E32E /* JSQErrorMessage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -286,6 +287,8 @@
 		FCFA5E121A29FC1000C8E32E /* JSQDisplayedMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSQDisplayedMessage.m; sourceTree = "<group>"; };
 		FCFA5E141A29FE3B00C8E32E /* JSQInfoMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSQInfoMessage.h; sourceTree = "<group>"; };
 		FCFA5E151A29FE3B00C8E32E /* JSQInfoMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSQInfoMessage.m; sourceTree = "<group>"; };
+		FCFA5E171A2A044500C8E32E /* JSQErrorMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSQErrorMessage.h; sourceTree = "<group>"; };
+		FCFA5E181A2A044500C8E32E /* JSQErrorMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSQErrorMessage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -538,6 +541,8 @@
 				FCFA5E121A29FC1000C8E32E /* JSQDisplayedMessage.m */,
 				FCFA5E141A29FE3B00C8E32E /* JSQInfoMessage.h */,
 				FCFA5E151A29FE3B00C8E32E /* JSQInfoMessage.m */,
+				FCFA5E171A2A044500C8E32E /* JSQErrorMessage.h */,
+				FCFA5E181A2A044500C8E32E /* JSQErrorMessage.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -870,6 +875,7 @@
 				88A25F3719D8DF2500924534 /* AppDelegate.m in Sources */,
 				886FFD2E19E9A65D00EB8485 /* UIDevice+JSQMessages.m in Sources */,
 				88A25FB619D8E01A00924534 /* NSString+JSQMessages.m in Sources */,
+				FCFA5E191A2A044500C8E32E /* JSQErrorMessage.m in Sources */,
 				88A901B619F618B100F99777 /* JSQMediaItem.m in Sources */,
 				88A25FCC19D8E01A00924534 /* JSQMessagesCollectionViewCellIncoming.m in Sources */,
 				88A25FBE19D8E01A00924534 /* JSQMessagesBubbleImageFactory.m in Sources */,

@@ -10,10 +10,10 @@
 
 @implementation JSQInfoMessage
 
-- (instancetype)initWithType:(JSQInfoMessageType)messageType
-                    senderId:(NSString *)senderId
-           senderDisplayName:(NSString *)senderDisplayName
-                        date:(NSDate *)date
+- (instancetype)initWithInfoType:(JSQInfoMessageType)messageType
+                        senderId:(NSString *)senderId
+               senderDisplayName:(NSString *)senderDisplayName
+                            date:(NSDate *)date
 {
     //@discussion: NSParameterAssert() ?
     
@@ -29,7 +29,7 @@
 -(NSString*)text
 {
     switch (self.infoMessageType) {
-        case InfoMessageTypeSessionDidEnd:
+        case JSQInfoMessageTypeSessionDidEnd:
             return [NSString stringWithFormat:@"Session with %@ ended.", self.senderDisplayName];
             break;
             
