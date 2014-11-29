@@ -45,6 +45,10 @@
 #import "JSQCall.h"
 #import "JSQCallCollectionViewCell.h"
 
+#import "JSQInfoMessage.h"
+#import "JSQErrorMessage.h"
+#import "JSQDisplayedMessageCollectionViewCell.h"
+
 static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObservingContext;
 
 
@@ -145,6 +149,8 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     self.incomingMediaCellIdentifier = [JSQMessagesCollectionViewCellIncoming mediaCellReuseIdentifier];
     
     self.callCellIndentifier = [JSQCallCollectionViewCell cellReuseIdentifier];
+    
+    self.displayedMessageCellIndentifier = [JSQDisplayedMessageCollectionViewCell cellReuseIdentifier];
     
     self.showTypingIndicator = NO;
     
@@ -431,7 +437,16 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     
     BOOL isOutgoingMessage = [messageSenderId isEqualToString:self.senderId];
     BOOL isCall = [messageItem isKindOfClass:[JSQCall class]];
-    BOOL isMediaMessage = isCall ? NO : [messageItem isMediaMessage];
+    BOOL isInfoMessage = [messageItem isKindOfClass:[JSQInfoMessage class]];
+    BOOL isErrorMessage = isInfoMessage ? NO : [messageItem isKindOfClass:[JSQErrorMessage class]];
+    
+    BOOL isMediaMessage = NO;
+    
+    if (!isCall && !isInfoMessage && !isErrorMessage )
+    {
+        isMediaMessage = [messageItem isMediaMessage];
+    }
+    
     
     NSString *cellIdentifier = nil;
     
@@ -448,12 +463,36 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
         callCell.layer.rasterizationScale = [UIScreen mainScreen].scale;
         return callCell;
         
+    } else if (isInfoMessage) {
+        
+        JSQInfoMessage * infoMessage = (JSQInfoMessage*)messageItem;
+        cellIdentifier = self.displayedMessageCellIndentifier;
+        JSQDisplayedMessageCollectionViewCell * infoCell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+        infoCell.cellLabel.text = [infoMessage text];
+        infoCell.cellLabel.textColor = [UIColor colorWithRed:239.f/255.f green:189.f/255.f blue:88.f/255.f alpha:1.0f];
+        infoCell.layer.shouldRasterize = YES;
+        infoCell.layer.rasterizationScale = [UIScreen mainScreen].scale;
+        return infoCell;
+        
+    } else if (isErrorMessage) {
+        
+        JSQErrorMessage * errorMessage = (JSQErrorMessage*)messageItem;
+        cellIdentifier = self.displayedMessageCellIndentifier;
+        JSQDisplayedMessageCollectionViewCell * errorCell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+        errorCell.cellLabel.text = [errorMessage text];
+        errorCell.cellLabel.textColor = [UIColor redColor];
+        errorCell.layer.shouldRasterize = YES;
+        errorCell.layer.rasterizationScale = [UIScreen mainScreen].scale;
+        return errorCell;
+        
     } else if (isMediaMessage) {
     
         cellIdentifier = isOutgoingMessage ? self.outgoingMediaCellIdentifier : self.incomingMediaCellIdentifier;
+        
     } else {
         
         cellIdentifier = isOutgoingMessage ? self.outgoingCellIdentifier : self.incomingCellIdentifier;
+        
     }
     
     JSQMessagesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];

@@ -21,6 +21,10 @@
 #import "JSQCallCollectionViewCell.h"
 #import "JSQCall.h"
 
+#import "JSQDisplayedMessageCollectionViewCell.h"
+#import "JSQErrorMessage.h"
+#import "JSQInfoMessage.h"
+
 @implementation DemoMessagesViewController
 
 #pragma mark - View lifecycle
@@ -379,7 +383,7 @@
      */
     JSQMessage *message = [self.demoData.messages objectAtIndex:indexPath.item];
     
-    if (![message isKindOfClass:JSQCall.class]) return nil;
+    if (![message isKindOfClass:[JSQCall class]] || ![message isKindOfClass:[JSQErrorMessage class]] || ![message isKindOfClass:[JSQInfoMessage class]]) return nil;
     
     if ([message.senderId isEqualToString:self.senderId]) {
         if (![NSUserDefaults outgoingAvatarSetting]) {
@@ -472,8 +476,11 @@
         
         return cell;
         
-    } else {
+    } else if ([msg isKindOfClass:[JSQCall class]]) {
         JSQCallCollectionViewCell *cell = (JSQCallCollectionViewCell *)[super collectionView:collectionView cellForItemAtIndexPath:indexPath];
+        return cell;
+    } else {
+        JSQDisplayedMessageCollectionViewCell * cell = (JSQDisplayedMessageCollectionViewCell *)[super collectionView:collectionView cellForItemAtIndexPath:indexPath];
         return cell;
     }
     

@@ -33,6 +33,7 @@
             </constraints>
             <size key="customSize" width="320" height="20"/>
             <connections>
+                <outlet property="cellLabel" destination="OVa-Xw-5vl" id="7PC-oj-dQZ"/>
                 <outlet property="cellLabelHeightConstraint" destination="fed-2c-dqd" id="98O-NG-4yI"/>
             </connections>
             <point key="canvasLocation" x="219" y="451"/>

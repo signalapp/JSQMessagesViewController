@@ -154,6 +154,17 @@
 
 @property (copy, nonatomic) NSString *callCellIndentifier;
 
+/*
+ * The collection view cell identifier used to dequeue displayed message collection view cell.
+ *
+ * @discussion This cell identifier's default value is returned by [JSQDisplayedMessageCollectionViewCell cellReuseIdentifier]. Value must not be nil.
+ *
+ * @see JSQDisplayedMessageCollectionViewCell
+ *
+ */
+
+@property (copy, nonatomic) NSString *displayedMessageCellIndentifier;
+
 /**
  *  Specifies whether or not the view controller should show the typing indicator for an incoming message.
  *

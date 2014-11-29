@@ -21,6 +21,8 @@
 #import "NSUserDefaults+DemoSettings.h"
 
 #import "JSQCall.h"
+#import "JSQInfoMessage.h"
+#import "JSQErrorMessage.h"
 
 /**
  *  This is for demo/testing purposes only.
@@ -152,6 +154,31 @@
                                                   date:[NSDate date]
                                               duration:0
                                                 status:kCallFailed],
+                     [[JSQInfoMessage alloc] initWithInfoType:JSQInfoMessageTypeSessionDidEnd
+                                                     senderId:kJSQDemoAvatarIdCook
+                                            senderDisplayName:kJSQDemoAvatarDisplayNameCook
+                                                         date:[NSDate date]],
+                     [[JSQErrorMessage alloc] initWithErrorType:JSQErrorMessageMissingKeyId
+                                                       senderId:kJSQDemoAvatarIdCook
+                                              senderDisplayName:kJSQDemoAvatarDisplayNameCook
+                                                           date:[NSDate date]],
+                     [[JSQErrorMessage alloc] initWithErrorType:JSQErrorMessageInvalidMessage
+                                                       senderId:kJSQDemoAvatarIdCook
+                                              senderDisplayName:kJSQDemoAvatarDisplayNameCook
+                                                           date:[NSDate date]],
+                     [[JSQErrorMessage alloc] initWithErrorType:JSQErrorMessageInvalidVersion
+                                                       senderId:kJSQDemoAvatarIdCook
+                                              senderDisplayName:kJSQDemoAvatarDisplayNameCook
+                                                           date:[NSDate date]],
+                     [[JSQErrorMessage alloc] initWithErrorType:JSQErrorMessageInvalidKeyException
+                                                       senderId:kJSQDemoAvatarIdCook
+                                              senderDisplayName:kJSQDemoAvatarDisplayNameCook
+                                                           date:[NSDate date]],
+                     [[JSQErrorMessage alloc] initWithErrorType:JSQErrorMessageWrongTrustedIdentityKey
+                                                       senderId:kJSQDemoAvatarIdCook
+                                              senderDisplayName:kJSQDemoAvatarDisplayNameCook
+                                                           date:[NSDate date]],
+                     
                      nil];
     
     [self addPhotoMediaMessage];

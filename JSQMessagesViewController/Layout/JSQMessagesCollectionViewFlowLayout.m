@@ -36,6 +36,9 @@
 #import "JSQCall.h"
 #import "JSQCallCollectionViewCell.h"
 
+#import "JSQErrorMessage.h"
+#import "JSQInfoMessage.h"
+
 
 const CGFloat kJSQMessagesCollectionViewCellLabelHeightDefault = 20.0f;
 const CGFloat kJSQMessagesCollectionViewAvatarSizeDefault = 30.0f;
@@ -443,7 +446,7 @@ const CGFloat kJSQMessagesCollectionViewAvatarSizeDefault = 30.0f;
     
     CGSize finalSize = CGSizeZero;
     
-    if (![messageItem isKindOfClass:[JSQCall class]]) {
+    if (![messageItem isKindOfClass:[JSQCall class]] && ![messageItem isKindOfClass:[JSQErrorMessage class]] && ![messageItem isKindOfClass:[JSQInfoMessage class]]) {
         if ([messageItem isMediaMessage]) {
             finalSize = [[messageItem media] mediaViewDisplaySize];
         }

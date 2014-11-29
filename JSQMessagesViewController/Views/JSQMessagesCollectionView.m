@@ -29,6 +29,8 @@
 
 #import "JSQCallCollectionViewCell.h"
 
+#import "JSQDisplayedMessageCollectionViewCell.h"
+
 @interface JSQMessagesCollectionView () <JSQMessagesLoadEarlierHeaderViewDelegate>
 
 - (void)jsq_configureCollectionView;
@@ -69,7 +71,11 @@
           forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
           withReuseIdentifier:[JSQMessagesLoadEarlierHeaderView headerReuseIdentifier]];
     
-    [self registerNib:[JSQCallCollectionViewCell nib] forCellWithReuseIdentifier:[JSQCallCollectionViewCell cellReuseIdentifier]];
+    [self registerNib:[JSQCallCollectionViewCell nib]
+          forCellWithReuseIdentifier:[JSQCallCollectionViewCell cellReuseIdentifier]];
+    
+    [self registerNib:[JSQDisplayedMessageCollectionViewCell nib]
+          forCellWithReuseIdentifier:[JSQDisplayedMessageCollectionViewCell cellReuseIdentifier]];
 
     _typingIndicatorDisplaysOnLeft = YES;
     _typingIndicatorMessageBubbleColor = [UIColor jsq_messageBubbleLightGrayColor];
