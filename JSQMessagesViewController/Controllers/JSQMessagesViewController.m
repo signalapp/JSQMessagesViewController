@@ -459,6 +459,15 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
         {
             callCell.cellLabel.textColor = [UIColor redColor];
         }
+        
+        BOOL isOutgoing = [self.senderId isEqualToString:call.senderId];
+        if (isOutgoing)
+        {
+            callCell.outgoingCallImageView.image = [call thumbnailImage];
+        } else {
+            callCell.incomingCallImageView.image = [call thumbnailImage];
+        }
+        
         callCell.layer.shouldRasterize = YES;
         callCell.layer.rasterizationScale = [UIScreen mainScreen].scale;
         return callCell;

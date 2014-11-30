@@ -105,6 +105,11 @@
 		FC15B7B11A1F6AC800F59801 /* JSQMessagesCollectionViewCellOutgoing.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC15B7AF1A1F6AC800F59801 /* JSQMessagesCollectionViewCellOutgoing.xib */; };
 		FC4FA03A1A1E1BD100DA100A /* JSQCall.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4FA0391A1E1BD100DA100A /* JSQCall.m */; };
 		FC4FA03D1A1E81AF00DA100A /* JSQCallCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4FA03C1A1E81AF00DA100A /* JSQCallCollectionViewCell.m */; };
+		FCA52AEF1A2B6ECE00CCADFA /* call_missed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA52AEE1A2B6ECE00CCADFA /* call_missed@2x.png */; };
+		FCA52AF51A2B6FAE00CCADFA /* call_canceled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA52AF11A2B6FAE00CCADFA /* call_canceled@2x.png */; };
+		FCA52AF61A2B6FAE00CCADFA /* call_failed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA52AF21A2B6FAE00CCADFA /* call_failed@2x.png */; };
+		FCA52AF71A2B6FAE00CCADFA /* call_incoming@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA52AF31A2B6FAE00CCADFA /* call_incoming@2x.png */; };
+		FCA52AF81A2B6FAE00CCADFA /* call_outgoing@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA52AF41A2B6FAE00CCADFA /* call_outgoing@2x.png */; };
 		FCFA5E131A29FC1000C8E32E /* JSQDisplayedMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFA5E121A29FC1000C8E32E /* JSQDisplayedMessage.m */; };
 		FCFA5E161A29FE3B00C8E32E /* JSQInfoMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFA5E151A29FE3B00C8E32E /* JSQInfoMessage.m */; };
 		FCFA5E191A2A044500C8E32E /* JSQErrorMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFA5E181A2A044500C8E32E /* JSQErrorMessage.m */; };
@@ -285,6 +290,11 @@
 		FC4FA03B1A1E81AF00DA100A /* JSQCallCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSQCallCollectionViewCell.h; sourceTree = "<group>"; };
 		FC4FA03C1A1E81AF00DA100A /* JSQCallCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSQCallCollectionViewCell.m; sourceTree = "<group>"; };
 		FC5C727E4CCDA2B95A7BA30C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		FCA52AEE1A2B6ECE00CCADFA /* call_missed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "call_missed@2x.png"; path = "../../JSQMessagesDemo/call_missed@2x.png"; sourceTree = "<group>"; };
+		FCA52AF11A2B6FAE00CCADFA /* call_canceled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "call_canceled@2x.png"; sourceTree = "<group>"; };
+		FCA52AF21A2B6FAE00CCADFA /* call_failed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "call_failed@2x.png"; sourceTree = "<group>"; };
+		FCA52AF31A2B6FAE00CCADFA /* call_incoming@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "call_incoming@2x.png"; sourceTree = "<group>"; };
+		FCA52AF41A2B6FAE00CCADFA /* call_outgoing@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "call_outgoing@2x.png"; sourceTree = "<group>"; };
 		FCFA5E111A29FC1000C8E32E /* JSQDisplayedMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSQDisplayedMessage.h; sourceTree = "<group>"; };
 		FCFA5E121A29FC1000C8E32E /* JSQDisplayedMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSQDisplayedMessage.m; sourceTree = "<group>"; };
 		FCFA5E141A29FE3B00C8E32E /* JSQInfoMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSQInfoMessage.h; sourceTree = "<group>"; };
@@ -450,6 +460,7 @@
 		88A25F3F19D8E01A00924534 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				FCA52AF01A2B6F8A00CCADFA /* Calls */,
 				8841B88219F4983C00EA16B6 /* Strings */,
 				8861666C19F492B70025B958 /* JSQMessagesAssets.bundle */,
 			);
@@ -662,6 +673,18 @@
 			path = ViewTests;
 			sourceTree = "<group>";
 		};
+		FCA52AF01A2B6F8A00CCADFA /* Calls */ = {
+			isa = PBXGroup;
+			children = (
+				FCA52AF11A2B6FAE00CCADFA /* call_canceled@2x.png */,
+				FCA52AF21A2B6FAE00CCADFA /* call_failed@2x.png */,
+				FCA52AF31A2B6FAE00CCADFA /* call_incoming@2x.png */,
+				FCA52AF41A2B6FAE00CCADFA /* call_outgoing@2x.png */,
+				FCA52AEE1A2B6ECE00CCADFA /* call_missed@2x.png */,
+			);
+			name = Calls;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -764,14 +787,19 @@
 				8861666D19F492B70025B958 /* JSQMessagesAssets.bundle in Resources */,
 				FC15B7B11A1F6AC800F59801 /* JSQMessagesCollectionViewCellOutgoing.xib in Resources */,
 				88A25FD619D8E01A00924534 /* JSQMessagesToolbarContentView.xib in Resources */,
+				FCA52AF71A2B6FAE00CCADFA /* call_incoming@2x.png in Resources */,
 				88A25F3A19D8DF2500924534 /* Images.xcassets in Resources */,
 				88A25FBC19D8E01A00924534 /* JSQMessagesViewController.xib in Resources */,
+				FCA52AF81A2B6FAE00CCADFA /* call_outgoing@2x.png in Resources */,
+				FCA52AF51A2B6FAE00CCADFA /* call_canceled@2x.png in Resources */,
+				FCA52AEF1A2B6ECE00CCADFA /* call_missed@2x.png in Resources */,
 				88A25FD819D8E01A00924534 /* JSQMessagesTypingIndicatorFooterView.xib in Resources */,
 				FCFA5E1E1A2A08E500C8E32E /* JSQDisplayedMessageCollectionViewCell.xib in Resources */,
 				88A25F3919D8DF2500924534 /* Main.storyboard in Resources */,
 				FC15B7B01A1F6AC800F59801 /* JSQMessagesCollectionViewCellIncoming.xib in Resources */,
 				88A25FD419D8E01A00924534 /* JSQMessagesLoadEarlierHeaderView.xib in Resources */,
 				FC15B7A91A1E880900F59801 /* JSQCallCollectionViewCell.xib in Resources */,
+				FCA52AF61A2B6FAE00CCADFA /* call_failed@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

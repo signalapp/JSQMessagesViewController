@@ -14,6 +14,10 @@
 
 @property (weak, nonatomic) IBOutlet JSQMessagesLabel *cellLabel;
 
+@property (weak, nonatomic) IBOutlet UIImageView *outgoingCallImageView;
+
+@property (weak, nonatomic) IBOutlet UIImageView *incomingCallImageView;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *cellLabelHeightConstraint;
 
 - (void)jsq_updateConstraint:(NSLayoutConstraint *)constraint withConstant:(CGFloat)constant;

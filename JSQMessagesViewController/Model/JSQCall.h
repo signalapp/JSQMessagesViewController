@@ -58,4 +58,6 @@ typedef enum : NSUInteger {
 
 -(NSString*)text;
 
+-(UIImage*)thumbnailImage;
+
 @end

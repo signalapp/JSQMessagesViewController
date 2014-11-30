@@ -16,11 +16,15 @@
 
 @property (weak, nonatomic, readonly) JSQMessagesLabel *cellLabel;
 
+@property (weak, nonatomic, readonly) UIImageView *outgoingCallImageView;
+
+@property (weak, nonatomic, readonly) UIImageView *incomingCallImageView;
+
+
 #pragma mark - Class methods
 
 + (UINib *)nib;
 
 + (NSString *)cellReuseIdentifier;
-
 
 @end

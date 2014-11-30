@@ -8,6 +8,7 @@
 #import "JSQCall.h"
 
 #import "JSQMessagesTimestampFormatter.h"
+#import "UIImage+JSQMessages.h"
 
 @implementation JSQCall
 
@@ -74,6 +75,29 @@
     }
 }
 
+-(UIImage*)thumbnailImage
+{
+    switch (self.status) {
+        case kCallNone:
+            return nil;
+            break;
+        case kCallFailed:
+            return [UIImage imageNamed:@"call_failed"];
+            break;
+        case kCallMissed:
+            return [UIImage imageNamed:@"call_missed"];
+            break;
+        case kCallIncoming:
+            return [[UIImage imageNamed:@"call_incoming"] jsq_imageMaskedWithColor:[UIColor darkGrayColor]];
+            break;
+        case kCallOutgoing:
+            return [[UIImage imageNamed:@"call_outgoing"] jsq_imageMaskedWithColor:[UIColor darkGrayColor]];
+            break;
+        default:
+            return nil;
+            break;
+    }
+}
 
 #pragma mark - NSObject
 
