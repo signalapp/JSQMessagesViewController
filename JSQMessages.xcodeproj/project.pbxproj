@@ -110,8 +110,6 @@
 		FCA52AF61A2B6FAE00CCADFA /* call_failed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA52AF21A2B6FAE00CCADFA /* call_failed@2x.png */; };
 		FCA52AF71A2B6FAE00CCADFA /* call_incoming@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA52AF31A2B6FAE00CCADFA /* call_incoming@2x.png */; };
 		FCA52AF81A2B6FAE00CCADFA /* call_outgoing@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA52AF41A2B6FAE00CCADFA /* call_outgoing@2x.png */; };
-		FCA52AFE1A2B9BC200CCADFA /* warning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA52AFC1A2B9BC200CCADFA /* warning@2x.png */; };
-		FCA52AFF1A2B9BC200CCADFA /* error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA52AFD1A2B9BC200CCADFA /* error@2x.png */; };
 		FCA52B021A2B9F0E00CCADFA /* warning_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA52B001A2B9F0E00CCADFA /* warning_white@2x.png */; };
 		FCA52B031A2B9F0E00CCADFA /* error_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCA52B011A2B9F0E00CCADFA /* error_white@2x.png */; };
 		FCFA5E131A29FC1000C8E32E /* JSQDisplayedMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFA5E121A29FC1000C8E32E /* JSQDisplayedMessage.m */; };
@@ -299,8 +297,6 @@
 		FCA52AF21A2B6FAE00CCADFA /* call_failed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "call_failed@2x.png"; sourceTree = "<group>"; };
 		FCA52AF31A2B6FAE00CCADFA /* call_incoming@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "call_incoming@2x.png"; sourceTree = "<group>"; };
 		FCA52AF41A2B6FAE00CCADFA /* call_outgoing@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "call_outgoing@2x.png"; sourceTree = "<group>"; };
-		FCA52AFC1A2B9BC200CCADFA /* warning@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "warning@2x.png"; sourceTree = "<group>"; };
-		FCA52AFD1A2B9BC200CCADFA /* error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error@2x.png"; sourceTree = "<group>"; };
 		FCA52B001A2B9F0E00CCADFA /* warning_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "warning_white@2x.png"; sourceTree = "<group>"; };
 		FCA52B011A2B9F0E00CCADFA /* error_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error_white@2x.png"; sourceTree = "<group>"; };
 		FCFA5E111A29FC1000C8E32E /* JSQDisplayedMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSQDisplayedMessage.h; sourceTree = "<group>"; };
@@ -699,8 +695,6 @@
 			children = (
 				FCA52B001A2B9F0E00CCADFA /* warning_white@2x.png */,
 				FCA52B011A2B9F0E00CCADFA /* error_white@2x.png */,
-				FCA52AFC1A2B9BC200CCADFA /* warning@2x.png */,
-				FCA52AFD1A2B9BC200CCADFA /* error@2x.png */,
 			);
 			name = InfoError;
 			sourceTree = "<group>";
@@ -815,8 +809,6 @@
 				FCA52AF51A2B6FAE00CCADFA /* call_canceled@2x.png in Resources */,
 				FCA52B031A2B9F0E00CCADFA /* error_white@2x.png in Resources */,
 				FCA52AEF1A2B6ECE00CCADFA /* call_missed@2x.png in Resources */,
-				FCA52AFF1A2B9BC200CCADFA /* error@2x.png in Resources */,
-				FCA52AFE1A2B9BC200CCADFA /* warning@2x.png in Resources */,
 				88A25FD819D8E01A00924534 /* JSQMessagesTypingIndicatorFooterView.xib in Resources */,
 				FCFA5E1E1A2A08E500C8E32E /* JSQDisplayedMessageCollectionViewCell.xib in Resources */,
 				88A25F3919D8DF2500924534 /* Main.storyboard in Resources */,
