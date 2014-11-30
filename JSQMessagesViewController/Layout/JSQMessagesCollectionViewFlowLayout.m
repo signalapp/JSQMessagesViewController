@@ -36,6 +36,9 @@
 #import "JSQCall.h"
 #import "JSQCallCollectionViewCell.h"
 
+#import "JSQDisplayedMessage.h"
+#import "JSQDisplayedMessageCollectionViewCell.h"
+
 #import "JSQErrorMessage.h"
 #import "JSQInfoMessage.h"
 
@@ -481,9 +484,11 @@ const CGFloat kJSQMessagesCollectionViewAvatarSizeDefault = 30.0f;
             finalSize = CGSizeMake(finalWidth, stringSize.height + verticalInsets);
         }
     }
-    else
+    else if ([messageItem isKindOfClass:[JSQCall class]])
     {
         finalSize = CGSizeMake(kCallCellWidth, kCallCellHeight);
+    } else {
+        finalSize = CGSizeMake(kDisplayedMessageCellWidth, kDisplayedMessageCellHeight);
     }
     
     [self.messageBubbleCache setObject:[NSValue valueWithCGSize:finalSize] forKey:@(messageItem.hash)];

@@ -478,7 +478,9 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
         cellIdentifier = self.displayedMessageCellIndentifier;
         JSQDisplayedMessageCollectionViewCell * infoCell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
         infoCell.cellLabel.text = [infoMessage text];
-        infoCell.cellLabel.textColor = [UIColor colorWithRed:239.f/255.f green:189.f/255.f blue:88.f/255.f alpha:1.0f];
+        infoCell.cellLabel.textColor = [UIColor darkGrayColor];
+        infoCell.cellLabel.layer.borderColor = [[UIColor colorWithRed:239.f/255.f green:189.f/255.f blue:88.f/255.f alpha:1.0f] CGColor];
+        infoCell.headerImageView.image = [UIImage imageNamed:@"warning_white"];
         infoCell.layer.shouldRasterize = YES;
         infoCell.layer.rasterizationScale = [UIScreen mainScreen].scale;
         return infoCell;
@@ -489,7 +491,9 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
         cellIdentifier = self.displayedMessageCellIndentifier;
         JSQDisplayedMessageCollectionViewCell * errorCell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
         errorCell.cellLabel.text = [errorMessage text];
-        errorCell.cellLabel.textColor = [UIColor redColor];
+        errorCell.cellLabel.textColor = [UIColor darkGrayColor];
+        errorCell.cellLabel.layer.borderColor = [[UIColor colorWithRed:195.f/255.f green:0 blue:22.f/255.f alpha:1.f] CGColor];
+        errorCell.headerImageView.image = [UIImage imageNamed:@"error_white"];
         errorCell.layer.shouldRasterize = YES;
         errorCell.layer.rasterizationScale = [UIScreen mainScreen].scale;
         return errorCell;

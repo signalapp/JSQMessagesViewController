@@ -505,9 +505,9 @@
      *
      *  Show a timestamp for every 3rd message
      */
-    if (indexPath.item % 3 == 0) {
-        return kJSQMessagesCollectionViewCellLabelHeightDefault;
-    }
+//    if (indexPath.item % 3 == 0) {
+//        return kJSQMessagesCollectionViewCellLabelHeightDefault;
+//    }
     
     return 0.0f;
 }

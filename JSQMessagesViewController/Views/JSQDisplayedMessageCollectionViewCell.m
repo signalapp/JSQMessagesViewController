@@ -16,6 +16,8 @@
 
 @property(weak, nonatomic) IBOutlet NSLayoutConstraint* cellLabelHeightConstraint;
 
+@property (weak, nonatomic) IBOutlet UIImageView* headerImageView;
+
 - (void)jsq_updateConstraint:(NSLayoutConstraint *)constraint withConstant:(CGFloat)constant;
 
 @end
@@ -45,6 +47,9 @@
     self.backgroundColor = [UIColor whiteColor];
     self.cellLabelHeightConstraint.constant = 0.0f;
     
+    self.cellLabel.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    self.cellLabel.layer.borderWidth = 0.75f;
+    self.cellLabel.layer.cornerRadius = 5.0f;
     self.cellLabel.textAlignment = NSTextAlignmentCenter;
     self.cellLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];
     self.cellLabel.textColor = [UIColor lightGrayColor];
@@ -70,7 +75,7 @@
     [super applyLayoutAttributes:layoutAttributes];
     
     [self jsq_updateConstraint:self.cellLabelHeightConstraint
-                  withConstant:kDisplayedMessageCellHeight];
+                  withConstant:kDisplayedMessageCellTextLabelHeight];
     
 }
 

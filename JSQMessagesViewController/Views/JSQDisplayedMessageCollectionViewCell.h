@@ -10,12 +10,15 @@
 
 #import "JSQMessagesLabel.h"
 
-#define kDisplayedMessageCellHeight 20.0f
+#define kDisplayedMessageCellTextLabelHeight 50.0f
+#define kDisplayedMessageCellHeight 70.0f
 #define kDisplayedMessageCellWidth 200.0f
 
 @interface JSQDisplayedMessageCollectionViewCell : UICollectionViewCell
 
 @property (weak, nonatomic, readonly) JSQMessagesLabel * cellLabel;
+
+@property (weak, nonatomic, readonly) UIImageView * headerImageView;
 
 #pragma mark - Class methods
 
