@@ -73,25 +73,4 @@
     return sendButton;
 }
 
-+ (UIButton *)signalCallButtonItem
-{
-    NSString * sendTitle = NSLocalizedStringFromTable(@"Call", @"JSQMessages", @"Text for the send button on the messages view toolbar");
-    
-    UIButton *sendButton = [[UIButton alloc] initWithFrame:CGRectZero];
-    [sendButton setTitle:sendTitle forState:UIControlStateNormal];
-    [sendButton setTitleColor:[UIColor jsq_messageBubbleBlueColor] forState:UIControlStateNormal];
-    [sendButton setTitleColor:[[UIColor jsq_messageBubbleBlueColor] jsq_colorByDarkeningColorWithValue:0.1f] forState:UIControlStateHighlighted];
-    [sendButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
-    
-    sendButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:17.0f];
-    sendButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    sendButton.titleLabel.minimumScaleFactor = 0.85f;
-    sendButton.contentMode = UIViewContentModeCenter;
-    sendButton.backgroundColor = [UIColor clearColor];
-    sendButton.tintColor = [UIColor jsq_messageBubbleBlueColor];
-    
-    return sendButton;
-    
-}
-
 @end
