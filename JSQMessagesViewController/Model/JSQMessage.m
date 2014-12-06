@@ -97,6 +97,7 @@
         _senderDisplayName = [senderDisplayName copy];
         _date = [date copy];
         _isMediaMessage = isMedia;
+        _messageType = TSGenericTextMessageAdapter;
     }
     return self;
 }
@@ -154,11 +155,6 @@
 {
     return [NSString stringWithFormat:@"<%@: senderId=%@, senderDisplayName=%@, date=%@, isMediaMessage=%@, text=%@, media=%@>",
             [self class], self.senderId, self.senderDisplayName, self.date, @(self.isMediaMessage), self.text, self.media];
-}
-
--(TSMessageAdapterType)messageType
-{
-    return TSGenericTextMessageAdapter;
 }
 
 - (id)debugQuickLookObject

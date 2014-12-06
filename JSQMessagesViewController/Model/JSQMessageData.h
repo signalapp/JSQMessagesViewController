@@ -126,6 +126,6 @@ typedef NS_ENUM(NSInteger, TSMessageAdapterType) {
  * @see TSMessageType
  */
 
--(TSMessageAdapterType) messageType;
+- (TSMessageAdapterType) messageType;
 
 @end

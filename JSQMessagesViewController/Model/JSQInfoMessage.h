@@ -16,6 +16,8 @@ typedef NS_ENUM(NSInteger, JSQInfoMessageType){
 
 @property (nonatomic) JSQInfoMessageType infoMessageType;
 
+@property (nonatomic) TSMessageAdapterType messageType;
+
 #pragma mark - Initialization
 
 - (instancetype)initWithInfoType:(JSQInfoMessageType)messageType
@@ -24,8 +26,6 @@ typedef NS_ENUM(NSInteger, JSQInfoMessageType){
                             date:(NSDate*)date;
 
 - (NSString*)text;
-
--(TSMessageAdapterType)messageType;
 
 
 @end

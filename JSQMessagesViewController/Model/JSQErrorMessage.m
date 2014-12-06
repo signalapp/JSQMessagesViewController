@@ -19,6 +19,7 @@
     
     if (self) {
         _errorMessageType = messageType;
+        _messageType = TSErrorMessageAdapter;
     }
     
     return self;

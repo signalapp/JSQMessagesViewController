@@ -47,7 +47,10 @@ typedef enum : NSUInteger {
  */
 @property (nonatomic) CallStatus status;
 
-
+/*
+ * Returns message type for adapter
+ */
+@property (nonatomic) TSMessageAdapterType messageType;
 
 
 #pragma mark - Initialization 
@@ -61,7 +64,5 @@ typedef enum : NSUInteger {
 -(NSString*)text;
 
 -(UIImage*)thumbnailImage;
-
--(TSMessageAdapterType)messageType;
 
 @end

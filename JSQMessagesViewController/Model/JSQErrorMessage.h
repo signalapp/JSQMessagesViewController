@@ -22,6 +22,8 @@ typedef NS_ENUM(NSInteger, JSQErrorMessageType){
 
 @property (nonatomic) JSQErrorMessageType errorMessageType;
 
+@property (nonatomic) TSMessageAdapterType messageType;
+
 #pragma mark - Initialization
 
 - (instancetype)initWithErrorType:(JSQErrorMessageType)messageType
@@ -30,7 +32,5 @@ typedef NS_ENUM(NSInteger, JSQErrorMessageType){
                              date:(NSDate*)date;
 
 - (NSString*)text;
-
--(TSMessageAdapterType)messageType;
 
 @end

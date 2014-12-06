@@ -21,6 +21,7 @@
     
     if (self) {
         _infoMessageType = messageType;
+        _messageType = TSInfoMessageAdapter;
     }
     
     return self;
@@ -48,11 +49,6 @@
 {
     return [NSString stringWithFormat:@"<%@: senderId=%@, senderDisplayName=%@, date=%@, type=%ld>",
             [self class], self.senderId, self.senderDisplayName, self.date, self.infoMessageType];
-}
-
--(TSMessageAdapterType)messageType
-{
-    return TSInfoMessageAdapter;
 }
 
 @end
