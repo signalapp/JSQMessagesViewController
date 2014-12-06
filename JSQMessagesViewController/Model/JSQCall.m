@@ -31,6 +31,7 @@
         _date = [date copy];
         _duration = durationInSeconds;
         _status = status;
+        
     }
     return self;
 }
@@ -97,6 +98,11 @@
             return nil;
             break;
     }
+}
+
+-(TSMessageType)messageType
+{
+    return TSCall;
 }
 
 #pragma mark - NSObject

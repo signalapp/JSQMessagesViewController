@@ -436,9 +436,9 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     NSParameterAssert(messageSenderId != nil);
     
     BOOL isOutgoingMessage = [messageSenderId isEqualToString:self.senderId];
-    BOOL isCall = [messageItem isKindOfClass:[JSQCall class]];
-    BOOL isInfoMessage = [messageItem isKindOfClass:[JSQInfoMessage class]];
-    BOOL isErrorMessage = isInfoMessage ? NO : [messageItem isKindOfClass:[JSQErrorMessage class]];
+    BOOL isCall = [messageItem messageType] == TSCall;
+    BOOL isInfoMessage = [messageItem messageType] == TSInfoMessage;
+    BOOL isErrorMessage = [messageItem messageType] == TSErrorMessage;
     
     BOOL isMediaMessage = NO;
     

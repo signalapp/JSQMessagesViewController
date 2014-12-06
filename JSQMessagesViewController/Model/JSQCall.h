@@ -48,6 +48,8 @@ typedef enum : NSUInteger {
 @property (nonatomic) CallStatus status;
 
 
+
+
 #pragma mark - Initialization 
 
 - (instancetype)initWithCallerId:(NSString *)callerId
@@ -59,5 +61,7 @@ typedef enum : NSUInteger {
 -(NSString*)text;
 
 -(UIImage*)thumbnailImage;
+
+-(TSMessageType)messageType;
 
 @end

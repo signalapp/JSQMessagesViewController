@@ -66,4 +66,9 @@
             [self class], self.senderId, self.senderDisplayName, self.date, self.errorMessageType];
 }
 
+-(TSMessageType)messageType
+{
+    return TSErrorMessage;
+}
+
 @end

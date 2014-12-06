@@ -49,6 +49,7 @@
     _cachedImageView = nil;
 }
 
+
 #pragma mark - Setters
 
 - (void)setImage:(UIImage *)image

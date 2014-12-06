@@ -156,6 +156,11 @@
             [self class], self.senderId, self.senderDisplayName, self.date, @(self.isMediaMessage), self.text, self.media];
 }
 
+-(TSMessageType)messageType
+{
+    return TSGenericTextMessage;
+}
+
 - (id)debugQuickLookObject
 {
     return [self.media mediaView] ?: [self.media mediaPlaceholderView];
