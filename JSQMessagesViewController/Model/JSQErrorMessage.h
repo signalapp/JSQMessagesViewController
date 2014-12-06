@@ -31,6 +31,6 @@ typedef NS_ENUM(NSInteger, JSQErrorMessageType){
 
 - (NSString*)text;
 
--(TSMessageType)messageType;
+-(TSMessageAdapterType)messageType;
 
 @end

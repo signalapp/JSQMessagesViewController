@@ -50,9 +50,9 @@
             [self class], self.senderId, self.senderDisplayName, self.date, self.infoMessageType];
 }
 
--(TSMessageType)messageType
+-(TSMessageAdapterType)messageType
 {
-    return TSInfoMessage;
+    return TSInfoMessageAdapter;
 }
 
 @end

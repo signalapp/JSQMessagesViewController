@@ -25,7 +25,7 @@ typedef NS_ENUM(NSInteger, JSQInfoMessageType){
 
 - (NSString*)text;
 
--(TSMessageType)messageType;
+-(TSMessageAdapterType)messageType;
 
 
 @end

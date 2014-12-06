@@ -20,14 +20,14 @@
 
 #import "JSQMessageMediaData.h"
 
-typedef NS_ENUM(NSInteger, TSMessageType) {
-    TSIncomingMessage,
-    TSOutgoingMessage,
-    TSCall,
-    TSInfoMessage,
-    TSErrorMessage,
-    TSMediaAttachment,
-    TSGenericTextMessage,       //Used when message direction is unknown (outgoing or incoming)
+typedef NS_ENUM(NSInteger, TSMessageAdapterType) {
+    TSIncomingMessageAdapter,
+    TSOutgoingMessageAdapter,
+    TSCallAdapter,
+    TSInfoMessageAdapter,
+    TSErrorMessageAdapter,
+    TSMediaAttachmentAdapter,
+    TSGenericTextMessageAdapter,       //Used when message direction is unknown (outgoing or incoming)
 };
 
 /**
@@ -126,6 +126,6 @@ typedef NS_ENUM(NSInteger, TSMessageType) {
  * @see TSMessageType
  */
 
--(TSMessageType) messageType;
+-(TSMessageAdapterType) messageType;
 
 @end

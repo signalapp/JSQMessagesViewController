@@ -62,6 +62,6 @@ typedef enum : NSUInteger {
 
 -(UIImage*)thumbnailImage;
 
--(TSMessageType)messageType;
+-(TSMessageAdapterType)messageType;
 
 @end

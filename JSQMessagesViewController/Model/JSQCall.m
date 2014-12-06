@@ -100,9 +100,9 @@
     }
 }
 
--(TSMessageType)messageType
+-(TSMessageAdapterType)messageType
 {
-    return TSCall;
+    return TSCallAdapter;
 }
 
 #pragma mark - NSObject
