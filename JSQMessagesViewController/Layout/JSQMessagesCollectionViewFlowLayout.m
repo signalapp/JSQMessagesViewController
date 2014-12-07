@@ -449,7 +449,7 @@ const CGFloat kJSQMessagesCollectionViewAvatarSizeDefault = 30.0f;
     
     CGSize finalSize = CGSizeZero;
     
-    if (![messageItem isKindOfClass:[JSQCall class]] && ![messageItem isKindOfClass:[JSQErrorMessage class]] && ![messageItem isKindOfClass:[JSQInfoMessage class]]) {
+    if (messageItem.messageType != TSCallAdapter && messageItem.messageType != TSErrorMessageAdapter && messageItem.messageType != TSInfoMessageAdapter) {
         if ([messageItem isMediaMessage]) {
             finalSize = [[messageItem media] mediaViewDisplaySize];
         }
@@ -484,7 +484,7 @@ const CGFloat kJSQMessagesCollectionViewAvatarSizeDefault = 30.0f;
             finalSize = CGSizeMake(finalWidth, stringSize.height + verticalInsets);
         }
     }
-    else if ([messageItem isKindOfClass:[JSQCall class]])
+    else if (messageItem.messageType == TSCallAdapter)
     {
         finalSize = CGSizeMake(kCallCellWidth, kCallCellHeight);
     } else {
