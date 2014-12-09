@@ -611,8 +611,16 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 
 - (BOOL)collectionView:(JSQMessagesCollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    //  disable menu for media messages
+    //  disable menu for media messages, calls, info and error messages
     id<JSQMessageData> messageItem = [collectionView.dataSource collectionView:collectionView messageDataForItemAtIndexPath:indexPath];
+    
+    BOOL isErrorOrInfoMessage = messageItem.messageType == TSInfoMessageAdapter || messageItem.messageType == TSErrorMessageAdapter;
+    BOOL isCall = messageItem.messageType == TSCallAdapter;
+    
+    if (isErrorOrInfoMessage || isCall) {
+        return NO;
+    }
+    
     if ([messageItem isMediaMessage]) {
         return NO;
     }
