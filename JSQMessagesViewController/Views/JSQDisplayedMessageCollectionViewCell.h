@@ -14,11 +14,31 @@
 #define kDisplayedMessageCellHeight 70.0f
 #define kDisplayedMessageCellWidth 200.0f
 
+@class JSQDisplayedMessageCollectionViewCell;
+
+@protocol JSQDisplayedCollectionViewCellDelegate <NSObject>
+
+@required
+
+
+/**
+ *  Tells the delegate that the error/info message bubble has been tapped.
+ *
+ *  @param cell The cell that received the tap touch event.
+ */
+
+- (void)displayedCollectionViewCellDidTapMessage:(JSQDisplayedMessageCollectionViewCell *)cell;
+
+
+@end
+
 @interface JSQDisplayedMessageCollectionViewCell : UICollectionViewCell
 
 @property (weak, nonatomic, readonly) JSQMessagesLabel * cellLabel;
 
 @property (weak, nonatomic, readonly) UIImageView * headerImageView;
+
+@property (weak, nonatomic) id<JSQDisplayedCollectionViewCellDelegate> delegate;
 
 #pragma mark - Class methods
 

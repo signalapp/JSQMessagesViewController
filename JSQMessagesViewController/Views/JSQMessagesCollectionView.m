@@ -29,8 +29,6 @@
 
 #import "JSQCallCollectionViewCell.h"
 
-#import "JSQDisplayedMessageCollectionViewCell.h"
-
 @interface JSQMessagesCollectionView () <JSQMessagesLoadEarlierHeaderViewDelegate>
 
 - (void)jsq_configureCollectionView;
@@ -172,6 +170,17 @@
     [self.delegate collectionView:self
             didTapCellAtIndexPath:indexPath
                     touchLocation:position];
+}
+
+- (void)displayedCollectionViewCellDidTapMessage:(JSQDisplayedMessageCollectionViewCell *)cell
+{
+    NSIndexPath * indexPath = [self indexPathForCell:cell];
+    
+    if (indexPath == nil) {
+        return;
+    }
+    
+    [self.delegate collectionView:self didTapMessageBubbleAtIndexPath:indexPath];
 }
 
 @end

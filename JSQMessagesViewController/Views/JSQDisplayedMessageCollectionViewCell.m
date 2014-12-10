@@ -53,11 +53,18 @@
     self.cellLabel.textAlignment = NSTextAlignmentCenter;
     self.cellLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];
     self.cellLabel.textColor = [UIColor lightGrayColor];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(jsq_handleTapGesture:)];
+    [self addGestureRecognizer:tap];
+
 }
 
 -(void)dealloc
 {
     _cellLabel = nil;
+    
+    _delegate = nil;
+    
     
 }
 
@@ -91,6 +98,28 @@
     constraint.constant = constant;
 }
 
+#pragma mark - Gesture recognizers
+
+-(void)jsq_handleTapGesture:(UITapGestureRecognizer *)tap
+{
+    CGPoint touchPoint = [tap locationInView:self];
+    
+    if (CGRectContainsPoint(self.contentView.frame, touchPoint))
+    {
+        [self.delegate displayedCollectionViewCellDidTapMessage:self];
+    }
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    CGPoint touchPt = [touch locationInView:self];
+    
+    if ([gestureRecognizer isKindOfClass:[UILongPressGestureRecognizer class]]) {
+        return CGRectContainsPoint(self.contentView.frame, touchPt);
+    }
+    
+    return YES;
+}
 
 
 @end
