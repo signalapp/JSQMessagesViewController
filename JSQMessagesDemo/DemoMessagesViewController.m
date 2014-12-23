@@ -74,6 +74,13 @@
                                                                               style:UIBarButtonItemStyleBordered
                                                                              target:self
                                                                              action:@selector(receiveMessagePressed:)];
+    
+    /**
+     *  Customize your toolbar buttons
+     *
+     *  self.inputToolbar.contentView.leftBarButtonItem = custom button or nil to remove
+     *  self.inputToolbar.contentView.rightBarButtonItem = custom button or nil to remove
+     */
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -99,6 +106,16 @@
     self.collectionView.collectionViewLayout.springinessEnabled = [NSUserDefaults springinessSetting];
 }
 
+
+
+#pragma mark - Testing
+
+- (void)pushMainViewController
+{
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UINavigationController *nc = [sb instantiateInitialViewController];
+    [self.navigationController pushViewController:nc.topViewController animated:YES];
+}
 
 
 #pragma mark - Actions
@@ -217,7 +234,7 @@
          */
         [JSQSystemSoundPlayer jsq_playMessageReceivedSound];
         [self.demoData.messages addObject:newMessage];
-        [self finishReceivingMessage];
+        [self finishReceivingMessageAnimated:YES];
         
         
         if (newMessage.isMediaMessage) {
@@ -288,7 +305,8 @@
                                                           text:text];
     
     [self.demoData.messages addObject:message];
-    [self finishSendingMessage];
+    
+    [self finishSendingMessageAnimated:YES];
 }
 
 - (void)didPressAccessoryButton:(UIButton *)sender
@@ -329,7 +347,8 @@
     }
     
     [JSQSystemSoundPlayer jsq_playMessageSentSound];
-    [self finishSendingMessage];
+    
+    [self finishSendingMessageAnimated:YES];
 }
 
 
