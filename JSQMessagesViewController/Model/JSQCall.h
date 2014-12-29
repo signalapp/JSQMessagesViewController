@@ -10,11 +10,9 @@
 #import "JSQMessageData.h"
 
 typedef enum : NSUInteger {
-    kCallNone,
-    kCallOutgoing,
-    kCallIncoming,
-    kCallMissed,
-    kCallFailed
+    kCallOutgoing = 1,
+    kCallIncoming = 2,
+    kCallMissed   = 3,
 } CallStatus;
 
 
@@ -37,11 +35,6 @@ typedef enum : NSUInteger {
 @property (copy, nonatomic, readonly) NSDate *date;
 
 /*
- * Returns the duration of the call in seconds
- */
-@property (nonatomic, readonly) long duration;
-
-/*
  * Returns the call status 
  * @see CallStatus
  */
@@ -58,7 +51,6 @@ typedef enum : NSUInteger {
 - (instancetype)initWithCallerId:(NSString *)callerId
                callerDisplayName:(NSString *)callerDisplayName
                             date:(NSDate *)date
-                        duration:(long)durationInSeconds
                           status:(CallStatus)status;
 
 -(NSString*)text;
