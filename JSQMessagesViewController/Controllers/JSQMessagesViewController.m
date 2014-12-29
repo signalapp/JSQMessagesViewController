@@ -331,15 +331,12 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     
     [[NSNotificationCenter defaultCenter] postNotificationName:UITextViewTextDidChangeNotification object:textView];
     
+    [self.collectionView.collectionViewLayout invalidateLayoutWithContext:[JSQMessagesCollectionViewFlowLayoutInvalidationContext context]];
+    [self.collectionView reloadData];
     
-    [self.collectionView performBatchUpdates:^{
-        [self.collectionView.collectionViewLayout invalidateLayoutWithContext:[JSQMessagesCollectionViewFlowLayoutInvalidationContext context]];
-        [self.collectionView reloadData];
-    } completion:^(BOOL finished){
-        if (self.automaticallyScrollsToMostRecentMessage) {
-            [self scrollToBottomAnimated:animated];
-        }
-    }];
+    if (self.automaticallyScrollsToMostRecentMessage) {
+        [self scrollToBottomAnimated:animated];
+    }
 }
 
 - (void)finishReceivingMessage
@@ -351,14 +348,12 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     
     self.showTypingIndicator = NO;
     
-    [self.collectionView performBatchUpdates:^{
-        [self.collectionView.collectionViewLayout invalidateLayoutWithContext:[JSQMessagesCollectionViewFlowLayoutInvalidationContext context]];
-        [self.collectionView reloadData];
-    } completion:^(BOOL finished){
-        if (self.automaticallyScrollsToMostRecentMessage) {
-            [self scrollToBottomAnimated:animated];
-        }
-    }];
+    [self.collectionView.collectionViewLayout invalidateLayoutWithContext:[JSQMessagesCollectionViewFlowLayoutInvalidationContext context]];
+    [self.collectionView reloadData];
+
+    if (self.automaticallyScrollsToMostRecentMessage) {
+        [self scrollToBottomAnimated:animated];
+    }
 }
 
 - (void)scrollToBottomAnimated:(BOOL)animated

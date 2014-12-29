@@ -105,7 +105,6 @@
                      [[JSQCall alloc] initWithCallerId:kJSQDemoAvatarIdWoz
                                      callerDisplayName:kJSQDemoAvatarDisplayNameWoz
                                                   date:[NSDate date]
-                                              duration:142
                                                 status:kCallOutgoing],
                      [[JSQMessage alloc] initWithSenderId:kJSQDemoAvatarIdSquires
                                             senderDisplayName:kJSQDemoAvatarDisplayNameSquires
@@ -142,18 +141,11 @@
                      [[JSQCall alloc] initWithCallerId:kJSQDemoAvatarIdWoz
                                      callerDisplayName:kJSQDemoAvatarDisplayNameWoz
                                                   date:[NSDate date]
-                                              duration:127
                                                 status:kCallIncoming],
                      [[JSQCall alloc] initWithCallerId:kJSQDemoAvatarIdWoz
                                      callerDisplayName:kJSQDemoAvatarDisplayNameWoz
                                                   date:[NSDate date]
-                                              duration:0
                                                 status:kCallMissed],
-                     [[JSQCall alloc] initWithCallerId:kJSQDemoAvatarIdWoz
-                                     callerDisplayName:kJSQDemoAvatarDisplayNameWoz
-                                                  date:[NSDate date]
-                                              duration:0
-                                                status:kCallFailed],
                      [[JSQInfoMessage alloc] initWithInfoType:JSQInfoMessageTypeSessionDidEnd
                                                      senderId:kJSQDemoAvatarIdCook
                                             senderDisplayName:kJSQDemoAvatarDisplayNameCook
