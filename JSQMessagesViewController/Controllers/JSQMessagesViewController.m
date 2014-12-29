@@ -351,9 +351,6 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     
     self.showTypingIndicator = NO;
     
-    [self.collectionView.collectionViewLayout invalidateLayoutWithContext:[JSQMessagesCollectionViewFlowLayoutInvalidationContext context]];
-    [self.collectionView reloadData];
-    
     [self.collectionView performBatchUpdates:^{
         [self.collectionView.collectionViewLayout invalidateLayoutWithContext:[JSQMessagesCollectionViewFlowLayoutInvalidationContext context]];
         [self.collectionView reloadData];
@@ -362,7 +359,6 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
             [self scrollToBottomAnimated:animated];
         }
     }];
-
 }
 
 - (void)scrollToBottomAnimated:(BOOL)animated
