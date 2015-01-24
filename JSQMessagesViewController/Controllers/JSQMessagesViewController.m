@@ -479,7 +479,7 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
         UIFont *regularFont = [UIFont systemFontOfSize:fontSize];
         UIColor *foregroundColor = [UIColor whiteColor];
         NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:
-                               boldFont, NSFontAttributeName];
+                               boldFont, NSFontAttributeName, nil];
         NSDictionary *subAttrs = [NSDictionary dictionaryWithObjectsAndKeys:
                                   regularFont, NSFontAttributeName, nil];
         const NSRange range = NSMakeRange([text length],[allText length]);
