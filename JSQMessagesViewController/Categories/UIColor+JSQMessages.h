@@ -69,4 +69,20 @@
  */
 - (UIColor *)jsq_colorByDarkeningColorWithValue:(CGFloat)value;
 
+#pragma mark - OWS Colors
+
++ (UIColor *) ows_blueColor;
+
++ (UIColor *) ows_fadedBlueColor;
+
++ (UIColor *) ows_darkBackgroundColor;
+
++ (UIColor *) ows_darkGrayColor;
+
++ (UIColor *) ows_yellowColor;
+
++ (UIColor *) ows_greenColor;
+
++ (UIColor *) ows_redColor;
+
 @end
