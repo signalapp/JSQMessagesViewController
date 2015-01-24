@@ -472,12 +472,7 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
         JSQCallCollectionViewCell * callCell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
         callCell.cellLabel.text = [call text];
         
-        callCell.cellLabel.textColor = [UIColor orangeColor];
-        
-        if (call.status == kCallMissed)
-        {
-            callCell.cellLabel.textColor = [UIColor redColor];
-        }
+        callCell.cellLabel.textColor = [UIColor colorWithRed:32.f/255.f green:144.f/255.f blue:234.f/255.f  alpha:1.f];
         
         BOOL isOutgoing = [self.senderId isEqualToString:call.senderId];
         if (isOutgoing)

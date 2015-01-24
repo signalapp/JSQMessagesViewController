@@ -72,20 +72,7 @@
 
 -(UIImage*)thumbnailImage
 {
-    switch (self.status) {
-        case kCallMissed:
-            return [UIImage imageNamed:@"call_missed"];
-            break;
-        case kCallIncoming:
-            return [[UIImage imageNamed:@"call_incoming"] jsq_imageMaskedWithColor:[UIColor darkGrayColor]];
-            break;
-        case kCallOutgoing:
-            return [[UIImage imageNamed:@"call_outgoing"] jsq_imageMaskedWithColor:[UIColor darkGrayColor]];
-            break;
-        default:
-            return nil;
-            break;
-    }
+    return nil;
 }
 
 #pragma mark - NSObject
