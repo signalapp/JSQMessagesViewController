@@ -474,7 +474,7 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
         NSString *text = [call text];
         NSString *dateText = [call dateText];
         NSString *allText = [text stringByAppendingString:dateText];
-        const CGFloat fontSize = 13;
+        const CGFloat fontSize = 14;
         UIFont *boldFont = [UIFont boldSystemFontOfSize:fontSize];
         UIFont *regularFont = [UIFont systemFontOfSize:fontSize];
         UIColor *foregroundColor = [UIColor whiteColor];
@@ -482,12 +482,13 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
                                boldFont, NSFontAttributeName, nil];
         NSDictionary *subAttrs = [NSDictionary dictionaryWithObjectsAndKeys:
                                   regularFont, NSFontAttributeName, nil];
-        const NSRange range = NSMakeRange([text length],[allText length]-1);
+        const NSRange range = NSMakeRange([text length],[dateText length]);
         NSMutableAttributedString *attributedText =
         [[NSMutableAttributedString alloc] initWithString:allText
                                                attributes:attrs];
         [attributedText setAttributes:subAttrs range:range];
         
+        callCell.cellLabel.attributedText = attributedText;
         callCell.cellLabel.textColor = [UIColor colorWithRed:32.f/255.f green:144.f/255.f blue:234.f/255.f  alpha:1.f];
         
         BOOL isOutgoing = [self.senderId isEqualToString:call.senderId];
