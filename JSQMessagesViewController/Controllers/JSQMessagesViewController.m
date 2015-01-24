@@ -470,11 +470,26 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
         JSQCall * call = (JSQCall*)messageItem;
         cellIdentifier = self.callCellIndentifier;
         JSQCallCollectionViewCell * callCell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-        callCell.cellLabel.text = [call text];
-        if (call.status == kCallMissed)
-        {
-            callCell.cellLabel.textColor = [UIColor redColor];
-        }
+        
+        NSString *text = [call text];
+        NSString *dateText = [call dateText];
+        NSString *allText = [text stringByAppendingString:dateText];
+        const CGFloat fontSize = 14;
+        UIFont *boldFont = [UIFont boldSystemFontOfSize:fontSize];
+        UIFont *regularFont = [UIFont systemFontOfSize:fontSize];
+        UIColor *foregroundColor = [UIColor whiteColor];
+        NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:
+                               boldFont, NSFontAttributeName, nil];
+        NSDictionary *subAttrs = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  regularFont, NSFontAttributeName, nil];
+        const NSRange range = NSMakeRange([text length],[dateText length]);
+        NSMutableAttributedString *attributedText =
+        [[NSMutableAttributedString alloc] initWithString:allText
+                                               attributes:attrs];
+        [attributedText setAttributes:subAttrs range:range];
+        
+        callCell.cellLabel.attributedText = attributedText;
+        callCell.cellLabel.textColor = [UIColor colorWithRed:32.f/255.f green:144.f/255.f blue:234.f/255.f  alpha:1.f];
         
         BOOL isOutgoing = [self.senderId isEqualToString:call.senderId];
         if (isOutgoing)

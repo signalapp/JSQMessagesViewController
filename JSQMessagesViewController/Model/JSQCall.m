@@ -50,35 +50,33 @@
 
 -(NSString*)text
 {
+    NSString *name = _senderDisplayName;
+    
     switch (self.status) {
         case kCallMissed:
-            return [NSString stringWithFormat:@"You missed a call from %@.", _senderDisplayName];
+            return [NSString stringWithFormat:@"Missed call from %@. ", name];
         case kCallIncoming:
-            return [NSString stringWithFormat:@"You received a call from %@.", _senderDisplayName];
+            return [NSString stringWithFormat:@"You received a call from %@. ", name];
         case kCallOutgoing:
-            return [NSString stringWithFormat:@"You called %@.", _senderDisplayName];
+            return [NSString stringWithFormat:@"You called %@. ", name];
         default:
             return nil;
             break;
     }
 }
 
+-(NSString*)dateText
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.timeStyle = NSDateFormatterShortStyle;
+    dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+    dateFormatter.doesRelativeDateFormatting = YES;
+    return [dateFormatter stringFromDate:_date];
+}
+
 -(UIImage*)thumbnailImage
 {
-    switch (self.status) {
-        case kCallMissed:
-            return [UIImage imageNamed:@"call_missed"];
-            break;
-        case kCallIncoming:
-            return [[UIImage imageNamed:@"call_incoming"] jsq_imageMaskedWithColor:[UIColor darkGrayColor]];
-            break;
-        case kCallOutgoing:
-            return [[UIImage imageNamed:@"call_outgoing"] jsq_imageMaskedWithColor:[UIColor darkGrayColor]];
-            break;
-        default:
-            return nil;
-            break;
-    }
+    return nil;
 }
 
 #pragma mark - NSObject
