@@ -482,7 +482,7 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
                                boldFont, NSFontAttributeName, nil];
         NSDictionary *subAttrs = [NSDictionary dictionaryWithObjectsAndKeys:
                                   regularFont, NSFontAttributeName, nil];
-        const NSRange range = NSMakeRange([text length],[allText length]);
+        const NSRange range = NSMakeRange([text length],[allText length]-1);
         NSMutableAttributedString *attributedText =
         [[NSMutableAttributedString alloc] initWithString:allText
                                                attributes:attrs];
