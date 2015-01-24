@@ -54,6 +54,7 @@ typedef enum : NSUInteger {
                           status:(CallStatus)status;
 
 -(NSString*)text;
+-(NSString*)dateText;
 
 -(UIImage*)thumbnailImage;
 
