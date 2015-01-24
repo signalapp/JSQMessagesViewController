@@ -50,13 +50,20 @@
 
 -(NSString*)text
 {
+    NSString *name = _senderDisplayName;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.timeStyle = NSDateFormatterShortStyle;
+    dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+    dateFormatter.doesRelativeDateFormatting = YES;
+    NSString *dateString = [dateFormatter stringFromDate:_date];
+    
     switch (self.status) {
         case kCallMissed:
-            return [NSString stringWithFormat:@"You missed a call from %@.", _senderDisplayName];
+            return [NSString stringWithFormat:@"Missed call from %@. %@", name, dateString];
         case kCallIncoming:
-            return [NSString stringWithFormat:@"You received a call from %@.", _senderDisplayName];
+            return [NSString stringWithFormat:@"You received a call from %@. %@", name, dateString];
         case kCallOutgoing:
-            return [NSString stringWithFormat:@"You called %@.", _senderDisplayName];
+            return [NSString stringWithFormat:@"You called %@. %@", name, dateString];
         default:
             return nil;
             break;

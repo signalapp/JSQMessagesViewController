@@ -471,6 +471,9 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
         cellIdentifier = self.callCellIndentifier;
         JSQCallCollectionViewCell * callCell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
         callCell.cellLabel.text = [call text];
+        
+        callCell.cellLabel.textColor = [UIColor orangeColor];
+        
         if (call.status == kCallMissed)
         {
             callCell.cellLabel.textColor = [UIColor redColor];
