@@ -9,8 +9,8 @@
 
 #import "JSQMessagesLabel.h"
 
-#define kCallCellHeight 20.0f
-#define kCallCellWidth 200.0f
+#define kCallCellHeight 40.0f
+#define kCallCellWidth 400.0f
 
 @interface JSQCallCollectionViewCell : UICollectionViewCell
 

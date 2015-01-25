@@ -471,33 +471,38 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
         cellIdentifier = self.callCellIndentifier;
         JSQCallCollectionViewCell * callCell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
         
-        NSString *text = [call text];
-        NSString *dateText = [call dateText];
-        NSString *allText = [text stringByAppendingString:dateText];
+        NSString *text =  call.date != nil ? [call text] : call.senderDisplayName;
+        NSString *allText = call.date != nil ? [text stringByAppendingString:[call dateText]] : text;
         const CGFloat fontSize = 14;
-        UIFont *boldFont = [UIFont boldSystemFontOfSize:fontSize];
-        UIFont *regularFont = [UIFont systemFontOfSize:fontSize];
+        UIFont *boldFont = [UIFont fontWithName:@"HelveticaNeue-Medium" size:12.0f];
+        UIFont *regularFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0f];
         UIColor *foregroundColor = [UIColor whiteColor];
         NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:
                                boldFont, NSFontAttributeName, nil];
-        NSDictionary *subAttrs = [NSDictionary dictionaryWithObjectsAndKeys:
+        
+        NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:allText
+                                                                                           attributes:attrs];
+        if([call date]!=nil) {
+            NSDictionary *subAttrs = [NSDictionary dictionaryWithObjectsAndKeys:
                                   regularFont, NSFontAttributeName, nil];
-        const NSRange range = NSMakeRange([text length],[dateText length]);
-        NSMutableAttributedString *attributedText =
-        [[NSMutableAttributedString alloc] initWithString:allText
-                                               attributes:attrs];
-        [attributedText setAttributes:subAttrs range:range];
+            const NSRange range = NSMakeRange([text length],[[call dateText] length]);
+         
+            [attributedText setAttributes:subAttrs range:range];
+            BOOL isOutgoing = [self.senderId isEqualToString:call.senderId];
+            if (isOutgoing)
+            {
+                callCell.outgoingCallImageView.image = [call thumbnailImage];
+            } else {
+                callCell.incomingCallImageView.image = [call thumbnailImage];
+            }
+
+        }
         
         callCell.cellLabel.attributedText = attributedText;
+        callCell.cellLabel.lineBreakMode = UILineBreakModeWordWrap;
+        callCell.cellLabel.numberOfLines = 0; // uses as many lines as it needs
         callCell.cellLabel.textColor = [UIColor colorWithRed:32.f/255.f green:144.f/255.f blue:234.f/255.f  alpha:1.f];
         
-        BOOL isOutgoing = [self.senderId isEqualToString:call.senderId];
-        if (isOutgoing)
-        {
-            callCell.outgoingCallImageView.image = [call thumbnailImage];
-        } else {
-            callCell.incomingCallImageView.image = [call thumbnailImage];
-        }
         
         callCell.layer.shouldRasterize = YES;
         callCell.layer.rasterizationScale = [UIScreen mainScreen].scale;
