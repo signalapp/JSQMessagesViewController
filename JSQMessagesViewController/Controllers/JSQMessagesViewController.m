@@ -49,6 +49,10 @@
 #import "JSQErrorMessage.h"
 #import "JSQDisplayedMessageCollectionViewCell.h"
 
+#import "UIFont+OWS.h"
+
+#define LABEL_FONT_SIZE 8
+
 static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObservingContext;
 
 
@@ -474,8 +478,8 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
         NSString *text = [call text];
         NSString *dateText = [call dateText];
         NSString *allText = [text stringByAppendingString:dateText];
-        UIFont *boldFont = [UIFont fontWithName:@"Helvetica" size:8];
-        UIFont *regularFont = [UIFont fontWithName:@"Helvetica" size:8];
+        UIFont *boldFont = [UIFont ows_regularFontWithSize:LABEL_FONT_SIZE];
+        UIFont *regularFont = [UIFont ows_lightFontWithSize:LABEL_FONT_SIZE];
         NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:
                                boldFont, NSFontAttributeName, nil];
         NSDictionary *subAttrs = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -488,7 +492,9 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
         
         callCell.cellLabel.attributedText = attributedText;
         callCell.cellLabel.textColor = [UIColor ows_blueColor];
-        callCell.cellLabel.numberOfLines = 2;
+        callCell.cellLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        callCell.cellLabel.numberOfLines = 0;
+        [callCell.cellLabel sizeToFit];
         
         BOOL isOutgoing = [self.senderId isEqualToString:call.senderId];
         if (isOutgoing)
