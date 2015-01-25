@@ -9,7 +9,7 @@
 #import "UIFont+OWS.h"
 
 static NSString *const kHelveticaNeueLight   = @"HelveticaNeue-Light";
-static NSString *const kHelveticaNeueRegular = @"HelveticaNeue-Regular";
+static NSString *const kHelveticaNeueRegular = @"HelveticaNeue";
 static NSString *const kHelveticaNeueMedium  = @"HelveticaNeue-Medium";
 static NSString *const kHelveticaNeueBold    = @"HelveticaNeue-Bold";
 
