@@ -103,6 +103,11 @@
 		88C4583019F5F7A0008FD427 /* JSQMessagesMediaViewBubbleImageMasker.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C4582F19F5F7A0008FD427 /* JSQMessagesMediaViewBubbleImageMasker.m */; };
 		88E4D7131A0DBD6B000CC061 /* JSQMessages.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8841B88719F4988800EA16B6 /* JSQMessages.strings */; };
 		94A4FA20C2FBD0D62614D5A8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 97E6750B77E8A7042BA0754B /* libPods.a */; };
+		B1F3D5651A747DD100E9D3C4 /* HelveticaNeueLTStd-Bd.otf in Resources */ = {isa = PBXBuildFile; fileRef = B1F3D5611A747DD100E9D3C4 /* HelveticaNeueLTStd-Bd.otf */; };
+		B1F3D5661A747DD100E9D3C4 /* HelveticaNeueLTStd-Lt.otf in Resources */ = {isa = PBXBuildFile; fileRef = B1F3D5621A747DD100E9D3C4 /* HelveticaNeueLTStd-Lt.otf */; };
+		B1F3D5671A747DD100E9D3C4 /* HelveticaNeueLTStd-Md.otf in Resources */ = {isa = PBXBuildFile; fileRef = B1F3D5631A747DD100E9D3C4 /* HelveticaNeueLTStd-Md.otf */; };
+		B1F3D5681A747DD100E9D3C4 /* HelveticaNeueLTStd-Th.otf in Resources */ = {isa = PBXBuildFile; fileRef = B1F3D5641A747DD100E9D3C4 /* HelveticaNeueLTStd-Th.otf */; };
+		B1F3D5721A74893300E9D3C4 /* UIFont+OWS.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F3D5711A74893300E9D3C4 /* UIFont+OWS.m */; };
 		FC15B7A91A1E880900F59801 /* JSQCallCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC15B7A81A1E880900F59801 /* JSQCallCollectionViewCell.xib */; };
 		FC15B7B01A1F6AC800F59801 /* JSQMessagesCollectionViewCellIncoming.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC15B7AE1A1F6AC800F59801 /* JSQMessagesCollectionViewCellIncoming.xib */; };
 		FC15B7B11A1F6AC800F59801 /* JSQMessagesCollectionViewCellOutgoing.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC15B7AF1A1F6AC800F59801 /* JSQMessagesCollectionViewCellOutgoing.xib */; };
@@ -290,6 +295,12 @@
 		88C4582E19F5F7A0008FD427 /* JSQMessagesMediaViewBubbleImageMasker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSQMessagesMediaViewBubbleImageMasker.h; sourceTree = "<group>"; };
 		88C4582F19F5F7A0008FD427 /* JSQMessagesMediaViewBubbleImageMasker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSQMessagesMediaViewBubbleImageMasker.m; sourceTree = "<group>"; };
 		97E6750B77E8A7042BA0754B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1F3D5611A747DD100E9D3C4 /* HelveticaNeueLTStd-Bd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HelveticaNeueLTStd-Bd.otf"; sourceTree = "<group>"; };
+		B1F3D5621A747DD100E9D3C4 /* HelveticaNeueLTStd-Lt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HelveticaNeueLTStd-Lt.otf"; sourceTree = "<group>"; };
+		B1F3D5631A747DD100E9D3C4 /* HelveticaNeueLTStd-Md.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HelveticaNeueLTStd-Md.otf"; sourceTree = "<group>"; };
+		B1F3D5641A747DD100E9D3C4 /* HelveticaNeueLTStd-Th.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HelveticaNeueLTStd-Th.otf"; sourceTree = "<group>"; };
+		B1F3D5701A74893300E9D3C4 /* UIFont+OWS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+OWS.h"; sourceTree = "<group>"; };
+		B1F3D5711A74893300E9D3C4 /* UIFont+OWS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+OWS.m"; sourceTree = "<group>"; };
 		FC15B7A81A1E880900F59801 /* JSQCallCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSQCallCollectionViewCell.xib; sourceTree = "<group>"; };
 		FC15B7AE1A1F6AC800F59801 /* JSQMessagesCollectionViewCellIncoming.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSQMessagesCollectionViewCellIncoming.xib; sourceTree = "<group>"; };
 		FC15B7AF1A1F6AC800F59801 /* JSQMessagesCollectionViewCellOutgoing.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSQMessagesCollectionViewCellOutgoing.xib; sourceTree = "<group>"; };
@@ -455,6 +466,7 @@
 		88A25F3E19D8E01A00924534 /* JSQMessagesViewController */ = {
 			isa = PBXGroup;
 			children = (
+				B1F3D5601A747DD100E9D3C4 /* Fonts */,
 				88A25F3F19D8E01A00924534 /* Assets */,
 				88A25F5419D8E01A00924534 /* Categories */,
 				88A25F5F19D8E01A00924534 /* Controllers */,
@@ -493,6 +505,8 @@
 				88A25F5C19D8E01A00924534 /* UIImage+JSQMessages.m */,
 				88A25F5D19D8E01A00924534 /* UIView+JSQMessages.h */,
 				88A25F5E19D8E01A00924534 /* UIView+JSQMessages.m */,
+				B1F3D5701A74893300E9D3C4 /* UIFont+OWS.h */,
+				B1F3D5711A74893300E9D3C4 /* UIFont+OWS.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -687,6 +701,17 @@
 			path = ViewTests;
 			sourceTree = "<group>";
 		};
+		B1F3D5601A747DD100E9D3C4 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B1F3D5611A747DD100E9D3C4 /* HelveticaNeueLTStd-Bd.otf */,
+				B1F3D5621A747DD100E9D3C4 /* HelveticaNeueLTStd-Lt.otf */,
+				B1F3D5631A747DD100E9D3C4 /* HelveticaNeueLTStd-Md.otf */,
+				B1F3D5641A747DD100E9D3C4 /* HelveticaNeueLTStd-Th.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		FCA52AF01A2B6F8A00CCADFA /* Calls */ = {
 			isa = PBXGroup;
 			children = (
@@ -811,8 +836,10 @@
 				FC15B7B11A1F6AC800F59801 /* JSQMessagesCollectionViewCellOutgoing.xib in Resources */,
 				88A25FD619D8E01A00924534 /* JSQMessagesToolbarContentView.xib in Resources */,
 				FCA52AF71A2B6FAE00CCADFA /* call_incoming@2x.png in Resources */,
+				B1F3D5681A747DD100E9D3C4 /* HelveticaNeueLTStd-Th.otf in Resources */,
 				88A25F3A19D8DF2500924534 /* Images.xcassets in Resources */,
 				88A25FBC19D8E01A00924534 /* JSQMessagesViewController.xib in Resources */,
+				B1F3D5661A747DD100E9D3C4 /* HelveticaNeueLTStd-Lt.otf in Resources */,
 				FCA52AF81A2B6FAE00CCADFA /* call_outgoing@2x.png in Resources */,
 				FCA52B021A2B9F0E00CCADFA /* warning_white@2x.png in Resources */,
 				FCA52AF51A2B6FAE00CCADFA /* call_canceled@2x.png in Resources */,
@@ -821,7 +848,9 @@
 				88A25FD819D8E01A00924534 /* JSQMessagesTypingIndicatorFooterView.xib in Resources */,
 				FCFA5E1E1A2A08E500C8E32E /* JSQDisplayedMessageCollectionViewCell.xib in Resources */,
 				88A25F3919D8DF2500924534 /* Main.storyboard in Resources */,
+				B1F3D5651A747DD100E9D3C4 /* HelveticaNeueLTStd-Bd.otf in Resources */,
 				FC15B7B01A1F6AC800F59801 /* JSQMessagesCollectionViewCellIncoming.xib in Resources */,
+				B1F3D5671A747DD100E9D3C4 /* HelveticaNeueLTStd-Md.otf in Resources */,
 				88A25FD419D8E01A00924534 /* JSQMessagesLoadEarlierHeaderView.xib in Resources */,
 				FC15B7A91A1E880900F59801 /* JSQCallCollectionViewCell.xib in Resources */,
 				FCA52AF61A2B6FAE00CCADFA /* call_failed@2x.png in Resources */,
@@ -952,6 +981,7 @@
 				88A25FE119D8E0C400924534 /* TableViewController.m in Sources */,
 				88A25FBD19D8E01A00924534 /* JSQMessagesAvatarImageFactory.m in Sources */,
 				88A25FB519D8E01A00924534 /* JSQSystemSoundPlayer+JSQMessages.m in Sources */,
+				B1F3D5721A74893300E9D3C4 /* UIFont+OWS.m in Sources */,
 				88A25FD019D8E01A00924534 /* JSQMessagesComposerTextView.m in Sources */,
 				88A25FC319D8E01A00924534 /* JSQMessagesCollectionViewLayoutAttributes.m in Sources */,
 			);

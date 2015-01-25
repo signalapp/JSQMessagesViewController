@@ -49,6 +49,10 @@
 #import "JSQErrorMessage.h"
 #import "JSQDisplayedMessageCollectionViewCell.h"
 
+#import "UIFont+OWS.h"
+
+#define LABEL_FONT_SIZE 8
+
 static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObservingContext;
 
 
@@ -474,10 +478,8 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
         NSString *text = [call text];
         NSString *dateText = [call dateText];
         NSString *allText = [text stringByAppendingString:dateText];
-        const CGFloat fontSize = 14;
-        UIFont *boldFont = [UIFont boldSystemFontOfSize:fontSize];
-        UIFont *regularFont = [UIFont systemFontOfSize:fontSize];
-        UIColor *foregroundColor = [UIColor whiteColor];
+        UIFont *boldFont = [UIFont ows_regularFontWithSize:LABEL_FONT_SIZE];
+        UIFont *regularFont = [UIFont ows_lightFontWithSize:LABEL_FONT_SIZE];
         NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:
                                boldFont, NSFontAttributeName, nil];
         NSDictionary *subAttrs = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -489,7 +491,10 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
         [attributedText setAttributes:subAttrs range:range];
         
         callCell.cellLabel.attributedText = attributedText;
-        callCell.cellLabel.textColor = [UIColor colorWithRed:32.f/255.f green:144.f/255.f blue:234.f/255.f  alpha:1.f];
+        callCell.cellLabel.textColor = [UIColor ows_blueColor];
+        callCell.cellLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        callCell.cellLabel.numberOfLines = 0;
+        [callCell.cellLabel sizeToFit];
         
         BOOL isOutgoing = [self.senderId isEqualToString:call.senderId];
         if (isOutgoing)
