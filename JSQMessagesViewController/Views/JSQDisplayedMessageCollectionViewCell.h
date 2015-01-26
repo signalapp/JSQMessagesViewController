@@ -11,7 +11,7 @@
 #import "JSQMessagesLabel.h"
 
 #define kDisplayedMessageCellTextLabelHeight 50.0f
-#define kDisplayedMessageCellHeight 70.0f
+#define kDisplayedMessageCellHeight 22.0f
 #define kDisplayedMessageCellWidth 200.0f
 
 @class JSQDisplayedMessageCollectionViewCell;

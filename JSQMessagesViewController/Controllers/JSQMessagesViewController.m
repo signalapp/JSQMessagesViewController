@@ -49,6 +49,8 @@
 #import "JSQErrorMessage.h"
 #import "JSQDisplayedMessageCollectionViewCell.h"
 
+#define LABEL_FONT_SIZE 12
+
 static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObservingContext;
 
 
@@ -473,10 +475,8 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
         
         NSString *text =  call.date != nil ? [call text] : call.senderDisplayName;
         NSString *allText = call.date != nil ? [text stringByAppendingString:[call dateText]] : text;
-        const CGFloat fontSize = 14;
-        UIFont *boldFont = [UIFont fontWithName:@"HelveticaNeue-Medium" size:12.0f];
-        UIFont *regularFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0f];
-        UIColor *foregroundColor = [UIColor whiteColor];
+        UIFont *boldFont = [UIFont fontWithName:@"HelveticaNeue-Medium" size:LABEL_FONT_SIZE];
+        UIFont *regularFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:LABEL_FONT_SIZE];
         NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:
                                boldFont, NSFontAttributeName, nil];
         
@@ -503,7 +503,6 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
         callCell.cellLabel.numberOfLines = 0; // uses as many lines as it needs
         callCell.cellLabel.textColor = [UIColor colorWithRed:32.f/255.f green:144.f/255.f blue:234.f/255.f  alpha:1.f];
         
-        
         callCell.layer.shouldRasterize = YES;
         callCell.layer.rasterizationScale = [UIScreen mainScreen].scale;
         return callCell;
@@ -515,9 +514,10 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
         JSQDisplayedMessageCollectionViewCell * infoCell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
         infoCell.delegate = collectionView;
         infoCell.cellLabel.text = [infoMessage text];
-        infoCell.cellLabel.textColor = [UIColor darkGrayColor];
-        infoCell.cellLabel.layer.borderColor = [[UIColor colorWithRed:239.f/255.f green:189.f/255.f blue:88.f/255.f alpha:1.0f] CGColor];
-        infoCell.headerImageView.image = [UIImage imageNamed:@"warning_white"];
+        infoCell.cellLabel.textColor = [UIColor colorWithRed:32.f/255.f green:144.f/255.f blue:234.f/255.f  alpha:1.f];
+        infoCell.cellLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:12.0f];
+        infoCell.cellLabel.layer.borderWidth = 0;
+        infoCell.headerImageView.image = nil;
         infoCell.layer.shouldRasterize = YES;
         infoCell.layer.rasterizationScale = [UIScreen mainScreen].scale;
         return infoCell;
