@@ -13,7 +13,11 @@ typedef enum : NSUInteger {
     kCallOutgoing = 1,
     kCallIncoming = 2,
     kCallMissed   = 3,
+    kGroupUpdateJoin = 4,
+    kGroupUpdateLeft = 5,
+    kGroupUpdate = 6
 } CallStatus;
+
 
 
 @interface JSQCall : NSObject <JSQMessageData, NSCoding, NSCopying>
@@ -44,6 +48,11 @@ typedef enum : NSUInteger {
  * Returns message type for adapter
  */
 @property (nonatomic) TSMessageAdapterType messageType;
+
+/*
+ * User can configure whether a thumbnail is used in the display of this cell or not
+ */
+@property (nonatomic) BOOL useThumbnail;
 
 
 #pragma mark - Initialization 

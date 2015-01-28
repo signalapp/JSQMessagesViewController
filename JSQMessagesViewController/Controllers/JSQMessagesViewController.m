@@ -483,6 +483,7 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
         NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:allText
                                                                                            attributes:attrs];
         if([call date]!=nil) {
+            // Not a group meta message
             NSDictionary *subAttrs = [NSDictionary dictionaryWithObjectsAndKeys:
                                   regularFont, NSFontAttributeName, nil];
             const NSRange range = NSMakeRange([text length],[[call dateText] length]);
@@ -495,7 +496,10 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
             } else {
                 callCell.incomingCallImageView.image = [call thumbnailImage];
             }
-
+        }
+        else {
+            // A group meta message
+            callCell.incomingCallImageView.image = [call thumbnailImage];
         }
         
         callCell.cellLabel.attributedText = attributedText;
