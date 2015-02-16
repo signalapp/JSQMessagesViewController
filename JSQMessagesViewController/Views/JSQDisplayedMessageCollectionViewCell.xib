@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14C68k" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -24,7 +24,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="warning_white.png" translatesAutoresizingMaskIntoConstraints="NO" id="ePO-Cy-jUE">
-                        <rect key="frame" x="143" y="-3" width="35" height="35"/>
+                        <rect key="frame" x="143" y="0.0" width="35" height="35"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="35" id="Llx-81-oyV"/>
                             <constraint firstAttribute="width" constant="35" id="Nth-3D-Wo9"/>
@@ -35,7 +35,7 @@
             </view>
             <constraints>
                 <constraint firstItem="OVa-Xw-5vl" firstAttribute="top" secondItem="eMU-z2-CzM" secondAttribute="top" id="2E8-Lm-cti"/>
-                <constraint firstItem="OVa-Xw-5vl" firstAttribute="top" secondItem="ePO-Cy-jUE" secondAttribute="bottom" constant="-12" id="4ie-2d-9cn"/>
+                <constraint firstItem="OVa-Xw-5vl" firstAttribute="top" secondItem="ePO-Cy-jUE" secondAttribute="bottom" constant="-15" id="4ie-2d-9cn"/>
                 <constraint firstAttribute="trailing" secondItem="OVa-Xw-5vl" secondAttribute="trailing" constant="8" id="5Mk-DE-t1M"/>
                 <constraint firstItem="OVa-Xw-5vl" firstAttribute="leading" secondItem="eMU-z2-CzM" secondAttribute="leading" constant="8" id="E3N-dw-XQG"/>
                 <constraint firstItem="OVa-Xw-5vl" firstAttribute="top" secondItem="ePO-Cy-jUE" secondAttribute="bottom" id="Yy0-Kd-Lu4"/>
