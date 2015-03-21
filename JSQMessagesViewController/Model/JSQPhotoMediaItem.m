@@ -85,6 +85,11 @@
     return self.cachedImageView;
 }
 
+- (NSUInteger)mediaHash
+{
+    return self.hash;
+}
+
 #pragma mark - NSObject
 
 - (NSUInteger)hash
