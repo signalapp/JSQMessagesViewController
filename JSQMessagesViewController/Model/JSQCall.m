@@ -166,6 +166,10 @@
                                                        status:self.status];
 }
 
+- (NSUInteger)messageHash{
+    return self.hash;
+}
+
 
 
 @end
