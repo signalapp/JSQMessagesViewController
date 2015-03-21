@@ -54,15 +54,21 @@ typedef enum : NSUInteger {
  */
 @property (nonatomic) BOOL useThumbnail;
 
+/**
+ *  String to be displayed
+ */
+
+@property (nonatomic, copy) NSString *detailString;
+
 
 #pragma mark - Initialization 
 
 - (instancetype)initWithCallerId:(NSString *)callerId
                callerDisplayName:(NSString *)callerDisplayName
                             date:(NSDate *)date
-                          status:(CallStatus)status;
+                          status:(CallStatus)status
+                   displayString:(NSString*)detailString;
 
--(NSString*)text;
 -(NSString*)dateText;
 
 -(UIImage*)thumbnailImage;
