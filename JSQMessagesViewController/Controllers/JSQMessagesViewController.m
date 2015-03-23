@@ -567,14 +567,22 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     if (!isMediaMessage) {
         cell.textView.text = [messageItem text];
 
-        if ([UIDevice jsq_isCurrentDeviceBeforeiOS8]) {
+        //if ([UIDevice jsq_isCurrentDeviceBeforeiOS8]) {
             //  workaround for iOS 7 textView data detectors bug
-            cell.textView.text = nil;
-            cell.textView.attributedText = [[NSAttributedString alloc] initWithString:[messageItem text]
-                                                                           attributes:@{ NSFontAttributeName : collectionView.collectionViewLayout.messageBubbleFont }];
-        }
+        
+        //NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        //[paragraphStyle setLineSpacing: collectionView.collectionViewLayout.messageBubbleLineHeight];
+        //paragraphStyle.lineHeightMultiple = collectionView.collectionViewLayout.messageBubbleLineHeight; //50.0f;
+        //paragraphStyle.maximumLineHeight  = collectionView.collectionViewLayout.messageBubbleLineHeight; //55.0f;
+        //paragraphStyle.minimumLineHeight  = collectionView.collectionViewLayout.messageBubbleLineHeight; //45.0f;
+        NSDictionary *attributes = @{ NSFontAttributeName: collectionView.collectionViewLayout.messageBubbleFont,
+                                      NSParagraphStyleAttributeName: collectionView.collectionViewLayout.messageBubbleParagraphStyle };
+        cell.textView.text = nil;
+        cell.textView.attributedText = [[NSAttributedString alloc] initWithString:[messageItem text]
+                                                                       attributes: attributes];
+        //}
 
-        NSParameterAssert(cell.textView.text != nil);
+        //NSParameterAssert(cell.textView.text != nil);
 
         id<JSQMessageBubbleImageDataSource> bubbleImageDataSource = [collectionView.dataSource collectionView:collectionView messageBubbleImageDataForItemAtIndexPath:indexPath];
         if (bubbleImageDataSource != nil) {

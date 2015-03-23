@@ -84,6 +84,14 @@ FOUNDATION_EXPORT const CGFloat kJSQMessagesCollectionViewAvatarSizeDefault;
 @property (readonly, nonatomic) CGFloat itemWidth;
 
 /**
+ *  The paragraph style to display the body a text message in the message bubble of each
+ *  `JSQMessagesCollectionViewCell` in the collectionView.
+ *
+ *  @discussion This value is by default `nil` such that no paragraph style modifications are applied to the chosen font.
+ */
+@property (strong, nonatomic) NSMutableParagraphStyle *messageBubbleParagraphStyle;
+
+/**
  *  The font used to display the body a text message in the message bubble of each 
  *  `JSQMessagesCollectionViewCell` in the collectionView. 
  *  
@@ -173,6 +181,11 @@ FOUNDATION_EXPORT const CGFloat kJSQMessagesCollectionViewAvatarSizeDefault;
  *  @discussion The default value is `200`. A limit of `0` means no limit. This is not a strict limit.
  */
 @property (assign, nonatomic) NSUInteger cacheLimit;
+
+
+- (void)setMessageBubbleLineHeightMultiple:(CGFloat)lineHeight maxLineHeight:(CGFloat)maxLineHeight minLineHeight:(CGFloat)minLineHeight;
+
+- (void)setMessageBubbleLineSpacing:(CGFloat)lineSpacing;
 
 /**
  *  Computes and returns the size of the `messageBubbleImageView` property of a `JSQMessagesCollectionViewCell`

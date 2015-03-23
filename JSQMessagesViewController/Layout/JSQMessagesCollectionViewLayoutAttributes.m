@@ -45,6 +45,12 @@
     _messageBubbleFont = messageBubbleFont;
 }
 
+- (void)setMessageBubbleParagraphStyle:(NSMutableParagraphStyle *)messageBubbleParagraphStyle
+{
+    NSParameterAssert(messageBubbleParagraphStyle != nil);
+    _messageBubbleParagraphStyle = [messageBubbleParagraphStyle copy]; // do not allow mutation of style in layout
+}
+
 - (void)setMessageBubbleContainerViewWidth:(CGFloat)messageBubbleContainerViewWidth
 {
     NSParameterAssert(messageBubbleContainerViewWidth > 0.0f);
@@ -148,6 +154,7 @@
     copy.cellTopLabelHeight = self.cellTopLabelHeight;
     copy.messageBubbleTopLabelHeight = self.messageBubbleTopLabelHeight;
     copy.cellBottomLabelHeight = self.cellBottomLabelHeight;
+    copy.messageBubbleParagraphStyle = self.messageBubbleParagraphStyle;
     
     return copy;
 }

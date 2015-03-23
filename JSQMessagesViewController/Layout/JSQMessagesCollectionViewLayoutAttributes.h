@@ -31,6 +31,12 @@
 @property (strong, nonatomic) UIFont *messageBubbleFont;
 
 /**
+ *  Custom paragraph style
+ *  @see JSQMessagesCollectionViewCell.
+ */
+@property (strong, nonatomic) NSParagraphStyle *messageBubbleParagraphStyle;
+
+/**
  *  The width of the `messageBubbleContainerView` of a `JSQMessagesCollectionViewCell`.
  *  This value should be greater than `0.0`.
  *

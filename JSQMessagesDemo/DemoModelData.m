@@ -102,10 +102,10 @@
      *  You should have a mutable array or orderedSet, or something.
      */
     self.messages = [[NSMutableArray alloc] initWithObjects:
-                     [[JSQCall alloc] initWithCallerId:kJSQDemoAvatarIdWoz
+                     /*[[JSQCall alloc] initWithCallerId:kJSQDemoAvatarIdWoz
                                      callerDisplayName:kJSQDemoAvatarDisplayNameWoz
                                                   date:[NSDate date]
-                                                status:kCallOutgoing],
+                                                status:kCallOutgoing],*/
                      [[JSQMessage alloc] initWithSenderId:kJSQDemoAvatarIdSquires
                                             senderDisplayName:kJSQDemoAvatarDisplayNameSquires
                                                          date:[NSDate distantPast]
@@ -138,14 +138,14 @@
                                             senderDisplayName:kJSQDemoAvatarDisplayNameSquires
                                                          date:[NSDate date]
                                                          text:@"Now with media messages!"],
-                     [[JSQCall alloc] initWithCallerId:kJSQDemoAvatarIdWoz
+                     /*[[JSQCall alloc] initWithCallerId:kJSQDemoAvatarIdWoz
                                      callerDisplayName:kJSQDemoAvatarDisplayNameWoz
                                                   date:[NSDate date]
                                                 status:kCallIncoming],
                      [[JSQCall alloc] initWithCallerId:kJSQDemoAvatarIdWoz
                                      callerDisplayName:kJSQDemoAvatarDisplayNameWoz
                                                   date:[NSDate date]
-                                                status:kCallMissed],
+                                                status:kCallMissed],*/
                      [[JSQInfoMessage alloc] initWithInfoType:JSQInfoMessageTypeSessionDidEnd
                                                      senderId:kJSQDemoAvatarIdCook
                                             senderDisplayName:kJSQDemoAvatarDisplayNameCook

@@ -76,6 +76,12 @@
                                                                              action:@selector(receiveMessagePressed:)];
     
     /**
+     *  You can customize paragraph style
+     */
+    //[self.collectionView.collectionViewLayout setMessageBubbleLineSpacing:50.0f];
+    [self.collectionView.collectionViewLayout setMessageBubbleLineHeightMultiple:3.0f maxLineHeight:60.0f minLineHeight:50.0f];        
+    
+    /**
      *  Customize your toolbar buttons
      *
      *  self.inputToolbar.contentView.leftBarButtonItem = custom button or nil to remove

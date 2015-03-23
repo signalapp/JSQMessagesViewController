@@ -97,6 +97,7 @@ const CGFloat kJSQMessagesCollectionViewAvatarSizeDefault = 30.0f;
     _messageBubbleCache.countLimit = 200;
     
     _messageBubbleFont = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    _messageBubbleParagraphStyle = [[NSMutableParagraphStyle alloc] init];
     
     if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
         _messageBubbleLeftRightMargin = 240.0f;
@@ -156,6 +157,7 @@ const CGFloat kJSQMessagesCollectionViewAvatarSizeDefault = 30.0f;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     _messageBubbleFont = nil;
+    _messageBubbleParagraphStyle = nil;
     
     [_messageBubbleCache removeAllObjects];
     _messageBubbleCache = nil;
@@ -192,6 +194,31 @@ const CGFloat kJSQMessagesCollectionViewAvatarSizeDefault = 30.0f;
     
     NSParameterAssert(messageBubbleFont != nil);
     _messageBubbleFont = messageBubbleFont;
+    [self invalidateLayoutWithContext:[JSQMessagesCollectionViewFlowLayoutInvalidationContext context]];
+}
+
+- (void)setMessageBubbleParagraphStyle:(NSMutableParagraphStyle*)messageBubbleParagraphStyle
+{
+    if ([_messageBubbleParagraphStyle isEqual:messageBubbleParagraphStyle]) {
+        return;
+    }
+    
+    // Nil is valid in this case, can unset paragraph style.
+    _messageBubbleParagraphStyle = messageBubbleParagraphStyle;
+    [self invalidateLayoutWithContext:[JSQMessagesCollectionViewFlowLayoutInvalidationContext context]];
+}
+
+- (void)setMessageBubbleLineSpacing:(CGFloat)lineSpacing
+{
+    [_messageBubbleParagraphStyle setLineSpacing:lineSpacing];
+    [self invalidateLayoutWithContext:[JSQMessagesCollectionViewFlowLayoutInvalidationContext context]];
+}
+
+- (void)setMessageBubbleLineHeightMultiple:(CGFloat)lineHeight maxLineHeight:(CGFloat)maxLineHeight minLineHeight:(CGFloat)minLineHeight
+{
+    _messageBubbleParagraphStyle.lineHeightMultiple = lineHeight;
+    _messageBubbleParagraphStyle.maximumLineHeight  = maxLineHeight;
+    _messageBubbleParagraphStyle.minimumLineHeight  = minLineHeight;
     [self invalidateLayoutWithContext:[JSQMessagesCollectionViewFlowLayoutInvalidationContext context]];
 }
 
@@ -468,7 +495,8 @@ const CGFloat kJSQMessagesCollectionViewAvatarSizeDefault = 30.0f;
         
             CGRect stringRect = [[messageItem text] boundingRectWithSize:CGSizeMake(maximumTextWidth, CGFLOAT_MAX)
                                                              options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading)
-                                                          attributes:@{ NSFontAttributeName : self.messageBubbleFont }
+                                                          attributes:@{ NSFontAttributeName: self.messageBubbleFont,
+                                                                        NSParagraphStyleAttributeName: self.messageBubbleParagraphStyle }
                                                              context:nil];
         
             CGSize stringSize = CGRectIntegral(stringRect).size;
@@ -524,6 +552,8 @@ const CGFloat kJSQMessagesCollectionViewAvatarSizeDefault = 30.0f;
     layoutAttributes.textViewTextContainerInsets = self.messageBubbleTextViewTextContainerInsets;
     
     layoutAttributes.messageBubbleFont = self.messageBubbleFont;
+    
+    [layoutAttributes setMessageBubbleParagraphStyle: self.messageBubbleParagraphStyle];
     
     layoutAttributes.incomingAvatarViewSize = self.incomingAvatarViewSize;
     
