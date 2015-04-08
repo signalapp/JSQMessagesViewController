@@ -40,6 +40,7 @@
     attrs.incomingAvatarViewSize = CGSizeMake(34.0f, 34.0f);
     attrs.outgoingAvatarViewSize = CGSizeZero;
     attrs.cellTopLabelHeight = 20.0f;
+    attrs.messageBubbleParagraphStyle = [[NSParagraphStyle alloc] init];
     attrs.messageBubbleTopLabelHeight = 10.0f;
     attrs.cellBottomLabelHeight = 15.0f;
     XCTAssertNotNil(attrs, @"Layout attributes should not be nil");

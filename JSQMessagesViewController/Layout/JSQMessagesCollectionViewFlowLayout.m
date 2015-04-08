@@ -95,9 +95,9 @@ const CGFloat kJSQMessagesCollectionViewAvatarSizeDefault = 30.0f;
     _messageBubbleCache = [NSCache new];
     _messageBubbleCache.name = @"JSQMessagesCollectionViewFlowLayout.messageBubbleCache";
     _messageBubbleCache.countLimit = 200;
-    
-    _messageBubbleFont = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+
     _messageBubbleParagraphStyle = [[NSMutableParagraphStyle alloc] init];
+    _messageBubbleFont = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     
     if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
         _messageBubbleLeftRightMargin = 240.0f;

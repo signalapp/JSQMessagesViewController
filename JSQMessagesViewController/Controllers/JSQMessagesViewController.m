@@ -484,10 +484,8 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
         
         NSString *text =  call.date != nil ? [call text] : call.senderDisplayName;
         NSString *allText = call.date != nil ? [text stringByAppendingString:[call dateText]] : text;
-        const CGFloat fontSize = 14;
         UIFont *boldFont = [UIFont fontWithName:@"HelveticaNeue-Medium" size:12.0f];
         UIFont *regularFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0f];
-        UIColor *foregroundColor = [UIColor whiteColor];
         NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:
                                boldFont, NSFontAttributeName, nil];
         
@@ -514,7 +512,7 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
         }
         
         callCell.cellLabel.attributedText = attributedText;
-        callCell.cellLabel.lineBreakMode = UILineBreakModeWordWrap;
+        callCell.cellLabel.lineBreakMode = NSLineBreakByWordWrapping;
         callCell.cellLabel.numberOfLines = 0; // uses as many lines as it needs
         callCell.cellLabel.textColor = [UIColor colorWithRed:32.f/255.f green:144.f/255.f blue:234.f/255.f  alpha:1.f];
         
@@ -566,23 +564,11 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 
     if (!isMediaMessage) {
         cell.textView.text = [messageItem text];
-
-        //if ([UIDevice jsq_isCurrentDeviceBeforeiOS8]) {
-            //  workaround for iOS 7 textView data detectors bug
-        
-        //NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-        //[paragraphStyle setLineSpacing: collectionView.collectionViewLayout.messageBubbleLineHeight];
-        //paragraphStyle.lineHeightMultiple = collectionView.collectionViewLayout.messageBubbleLineHeight; //50.0f;
-        //paragraphStyle.maximumLineHeight  = collectionView.collectionViewLayout.messageBubbleLineHeight; //55.0f;
-        //paragraphStyle.minimumLineHeight  = collectionView.collectionViewLayout.messageBubbleLineHeight; //45.0f;
         NSDictionary *attributes = @{ NSFontAttributeName: collectionView.collectionViewLayout.messageBubbleFont,
                                       NSParagraphStyleAttributeName: collectionView.collectionViewLayout.messageBubbleParagraphStyle };
         cell.textView.text = nil;
         cell.textView.attributedText = [[NSAttributedString alloc] initWithString:[messageItem text]
                                                                        attributes: attributes];
-        //}
-
-        //NSParameterAssert(cell.textView.text != nil);
 
         id<JSQMessageBubbleImageDataSource> bubbleImageDataSource = [collectionView.dataSource collectionView:collectionView messageBubbleImageDataForItemAtIndexPath:indexPath];
         if (bubbleImageDataSource != nil) {
