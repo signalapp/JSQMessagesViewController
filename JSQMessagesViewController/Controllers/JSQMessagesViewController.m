@@ -171,6 +171,9 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     _collectionView.dataSource = nil;
     _collectionView.delegate = nil;
     _collectionView = nil;
+    
+    _inputToolbar.contentView.textView.delegate = nil;
+    _inputToolbar.delegate = nil;
     _inputToolbar = nil;
 
     _toolbarHeightConstraint = nil;
@@ -710,7 +713,7 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
 {
     if (action == @selector(copy:)) {
-        id<JSQMessageData> messageData = [self collectionView:collectionView messageDataForItemAtIndexPath:indexPath];
+        id<JSQMessageData> messageData = [collectionView.dataSource collectionView:collectionView messageDataForItemAtIndexPath:indexPath];
         [[UIPasteboard generalPasteboard] setString:[messageData text]];
     }
 }
