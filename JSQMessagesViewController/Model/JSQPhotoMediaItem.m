@@ -49,6 +49,11 @@
     _cachedImageView = nil;
 }
 
+- (void)clearCachedMediaViews
+{
+    [super clearCachedMediaViews];
+    _cachedImageView = nil;
+}
 
 #pragma mark - Setters
 
