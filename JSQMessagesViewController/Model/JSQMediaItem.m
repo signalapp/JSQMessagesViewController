@@ -89,7 +89,7 @@
     if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
         return CGSizeMake(315.0f, 225.0f);
     }
-    
+
     return CGSizeMake(210.0f, 150.0f);
 }
 
@@ -102,7 +102,7 @@
         [JSQMessagesMediaViewBubbleImageMasker applyBubbleImageMaskToMediaView:view isOutgoing:self.appliesMediaViewMaskAsOutgoing];
         self.cachedPlaceholderView = view;
     }
-    
+
     return self.cachedPlaceholderView;
 }
 
@@ -118,13 +118,13 @@
     if (self == object) {
         return YES;
     }
-    
+
     if (![object isKindOfClass:[self class]]) {
         return NO;
     }
-    
+
     JSQMediaItem *item = (JSQMediaItem *)object;
-    
+
     return self.appliesMediaViewMaskAsOutgoing == item.appliesMediaViewMaskAsOutgoing;
 }
 

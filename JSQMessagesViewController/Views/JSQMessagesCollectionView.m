@@ -176,6 +176,17 @@
                     touchLocation:position];
 }
 
+- (void)displayedCollectionViewCellDidTapMessage:(JSQDisplayedMessageCollectionViewCell *)cell
+{
+    NSIndexPath *indexPath = [self indexPathForCell:cell];
+    if (indexPath == nil) {
+        return;
+    }
+    
+    [self.delegate collectionView:self didTapMessageBubbleAtIndexPath:indexPath];
+}
+
+
 - (void)messagesCollectionViewCell:(JSQMessagesCollectionViewCell *)cell didPerformAction:(SEL)action withSender:(id)sender
 {
     NSIndexPath *indexPath = [self indexPathForCell:cell];

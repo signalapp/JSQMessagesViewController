@@ -31,5 +31,8 @@
     return self;
 }
 
+- (NSUInteger)messageHash {
+    return self.date.hash ^ self.senderId.hash;
+}
 
 @end
