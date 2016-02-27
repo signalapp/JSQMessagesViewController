@@ -105,7 +105,8 @@
                      [[JSQCall alloc] initWithCallerId:kJSQDemoAvatarIdWoz
                                      callerDisplayName:kJSQDemoAvatarDisplayNameWoz
                                                   date:[NSDate date]
-                                                status:kCallOutgoing],
+                                                status:kCallOutgoing
+                                          detailString:@"Outgoing call"],
                      [[JSQMessage alloc] initWithSenderId:kJSQDemoAvatarIdSquires
                                             senderDisplayName:kJSQDemoAvatarDisplayNameSquires
                                                          date:[NSDate distantPast]
@@ -141,11 +142,13 @@
                      [[JSQCall alloc] initWithCallerId:kJSQDemoAvatarIdWoz
                                      callerDisplayName:kJSQDemoAvatarDisplayNameWoz
                                                   date:[NSDate date]
-                                                status:kCallIncoming],
+                                                status:kCallIncoming
+                                          detailString:@"Incoming call"],
                      [[JSQCall alloc] initWithCallerId:kJSQDemoAvatarIdWoz
                                      callerDisplayName:kJSQDemoAvatarDisplayNameWoz
                                                   date:[NSDate date]
-                                                status:kCallMissed],
+                                                status:kCallMissed
+                                          detailString:@"Missed call"],
                      [[JSQInfoMessage alloc] initWithInfoType:JSQInfoMessageTypeSessionDidEnd
                                                      senderId:kJSQDemoAvatarIdCook
                                             senderDisplayName:kJSQDemoAvatarDisplayNameCook

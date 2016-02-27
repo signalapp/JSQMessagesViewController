@@ -18,13 +18,6 @@
 
 #import "DemoMessagesViewController.h"
 
-#import "JSQCallCollectionViewCell.h"
-#import "JSQCall.h"
-
-#import "JSQDisplayedMessageCollectionViewCell.h"
-#import "JSQErrorMessage.h"
-#import "JSQInfoMessage.h"
-
 @implementation DemoMessagesViewController
 
 #pragma mark - View lifecycle
@@ -50,6 +43,7 @@
     self.senderId = kJSQDemoAvatarIdSquires;
     self.senderDisplayName = kJSQDemoAvatarDisplayNameSquires;
     
+    self.inputToolbar.contentView.textView.pasteDelegate = self;
     
     /**
      *  Load up our fake data for the demo
@@ -79,8 +73,13 @@
      *  Register custom menu actions for cells.
      */
     [JSQMessagesCollectionViewCell registerMenuAction:@selector(customAction:)];
-    [UIMenuController sharedMenuController].menuItems = @[ [[UIMenuItem alloc] initWithTitle:@"Custom Action" action:@selector(customAction:)] ];
+    [UIMenuController sharedMenuController].menuItems = @[ [[UIMenuItem alloc] initWithTitle:@"Custom Action"
+                                                                                      action:@selector(customAction:)] ];
 
+    /**
+     *  OPT-IN: allow cells to be deleted
+     */
+    [JSQMessagesCollectionViewCell registerMenuAction:@selector(delete:)];
 
     /**
      *  Customize your toolbar buttons
@@ -177,7 +176,7 @@
         id<JSQMessageMediaData> newMediaData = nil;
         id newMediaAttachmentCopy = nil;
         
-        if ([copyMessage isKindOfClass:[JSQMessage class]]) {
+        if (copyMessage.isMediaMessage) {
             /**
              *  Last message was a media message
              */
@@ -324,6 +323,8 @@
 
 - (void)didPressAccessoryButton:(UIButton *)sender
 {
+    [self.inputToolbar.contentView.textView resignFirstResponder];
+
     UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Media messages"
                                                        delegate:self
                                               cancelButtonTitle:@"Cancel"
@@ -336,6 +337,7 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == actionSheet.cancelButtonIndex) {
+        [self.inputToolbar.contentView.textView becomeFirstResponder];
         return;
     }
     
@@ -371,6 +373,11 @@
 - (id<JSQMessageData>)collectionView:(JSQMessagesCollectionView *)collectionView messageDataForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     return [self.demoData.messages objectAtIndex:indexPath.item];
+}
+
+- (void)collectionView:(JSQMessagesCollectionView *)collectionView didDeleteMessageAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.demoData.messages removeObjectAtIndex:indexPath.item];
 }
 
 - (id<JSQMessageBubbleImageDataSource>)collectionView:(JSQMessagesCollectionView *)collectionView messageBubbleImageDataForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -415,8 +422,6 @@
      */
     JSQMessage *message = [self.demoData.messages objectAtIndex:indexPath.item];
     
-    if (![message isKindOfClass:[JSQCall class]] || ![message isKindOfClass:[JSQErrorMessage class]] || ![message isKindOfClass:[JSQInfoMessage class]]) return nil;
-    
     if ([message.senderId isEqualToString:self.senderId]) {
         if (![NSUserDefaults outgoingAvatarSetting]) {
             return nil;
@@ -427,7 +432,8 @@
             return nil;
         }
     }
-
+    
+    
     return [self.demoData.avatars objectForKey:message.senderId];
 }
 
@@ -488,34 +494,38 @@
     /**
      *  Override point for customizing cells
      */
+    JSQMessagesCollectionViewCell *cell = (JSQMessagesCollectionViewCell *)[super collectionView:collectionView cellForItemAtIndexPath:indexPath];
+    
+    /**
+     *  Configure almost *anything* on the cell
+     *
+     *  Text colors, label text, label colors, etc.
+     *
+     *
+     *  DO NOT set `cell.textView.font` !
+     *  Instead, you need to set `self.collectionView.collectionViewLayout.messageBubbleFont` to the font you want in `viewDidLoad`
+     *
+     *
+     *  DO NOT manipulate cell layout information!
+     *  Instead, override the properties you want on `self.collectionView.collectionViewLayout` from `viewDidLoad`
+     */
     
     JSQMessage *msg = [self.demoData.messages objectAtIndex:indexPath.item];
-
-    if ([msg isKindOfClass:[JSQMessage class]])
-    {
-        JSQMessagesCollectionViewCell *cell = (JSQMessagesCollectionViewCell *)[super collectionView:collectionView cellForItemAtIndexPath:indexPath];
-        if (!msg.isMediaMessage) {
-            if ([msg.senderId isEqualToString:self.senderId]) {
-                cell.textView.textColor = [UIColor blackColor];
-            }
-            else {
-                cell.textView.textColor = [UIColor whiteColor];
-            }
-            
-            cell.textView.linkTextAttributes = @{ NSForegroundColorAttributeName : cell.textView.textColor,
-                                                  NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle | NSUnderlinePatternSolid) };
+    
+    if ([msg respondsToSelector:@selector(isMediaMessage)] && !msg.isMediaMessage) {
+        
+        if ([msg.senderId isEqualToString:self.senderId]) {
+            cell.textView.textColor = [UIColor blackColor];
+        }
+        else {
+            cell.textView.textColor = [UIColor whiteColor];
         }
         
-        return cell;
-        
-    } else if ([msg isKindOfClass:[JSQCall class]]) {
-        JSQCallCollectionViewCell *cell = (JSQCallCollectionViewCell *)[super collectionView:collectionView cellForItemAtIndexPath:indexPath];
-        return cell;
-    } else {
-        JSQDisplayedMessageCollectionViewCell * cell = (JSQDisplayedMessageCollectionViewCell *)[super collectionView:collectionView cellForItemAtIndexPath:indexPath];
-        return cell;
+        cell.textView.linkTextAttributes = @{ NSForegroundColorAttributeName : cell.textView.textColor,
+                                              NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle | NSUnderlinePatternSolid) };
     }
     
+    return cell;
 }
 
 
@@ -574,9 +584,9 @@
      *
      *  Show a timestamp for every 3rd message
      */
-//    if (indexPath.item % 3 == 0) {
-//        return kJSQMessagesCollectionViewCellLabelHeightDefault;
-//    }
+    if (indexPath.item % 3 == 0) {
+        return kJSQMessagesCollectionViewCellLabelHeightDefault;
+    }
     
     return 0.0f;
 }
@@ -629,6 +639,25 @@
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView didTapCellAtIndexPath:(NSIndexPath *)indexPath touchLocation:(CGPoint)touchLocation
 {
     NSLog(@"Tapped cell at %@!", NSStringFromCGPoint(touchLocation));
+}
+
+#pragma mark - JSQMessagesComposerTextViewPasteDelegate methods
+
+
+- (BOOL)composerTextView:(JSQMessagesComposerTextView *)textView shouldPasteWithSender:(id)sender
+{
+    if ([UIPasteboard generalPasteboard].image) {
+        // If there's an image in the pasteboard, construct a media item with that image and `send` it.
+        JSQPhotoMediaItem *item = [[JSQPhotoMediaItem alloc] initWithImage:[UIPasteboard generalPasteboard].image];
+        JSQMessage *message = [[JSQMessage alloc] initWithSenderId:self.senderId
+                                                 senderDisplayName:self.senderDisplayName
+                                                              date:[NSDate date]
+                                                             media:item];
+        [self.demoData.messages addObject:message];
+        [self finishSendingMessage];
+        return NO;
+    }
+    return YES;
 }
 
 @end
