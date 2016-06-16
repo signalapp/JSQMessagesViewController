@@ -23,20 +23,6 @@
 #import "NSString+JSQMessages.h"
 
 
-@interface JSQMessagesComposerTextView ()
-
-- (void)jsq_configureTextView;
-
-- (void)jsq_addTextViewNotificationObservers;
-- (void)jsq_removeTextViewNotificationObservers;
-- (void)jsq_didReceiveTextViewNotification:(NSNotification *)notification;
-
-- (NSDictionary *)jsq_placeholderTextAttributes;
-
-@end
-
-
-
 @implementation JSQMessagesComposerTextView
 
 #pragma mark - Initialization
@@ -48,10 +34,6 @@
     CGFloat cornerRadius = 6.0f;
     
     self.backgroundColor = [UIColor whiteColor];
-    //Signal: Comment out elements of Composer view
-//    self.layer.borderWidth = 0.5f;
-//    self.layer.borderColor = [UIColor lightGrayColor].CGColor;
-//    self.layer.cornerRadius = cornerRadius;
     
     self.scrollIndicatorInsets = UIEdgeInsetsMake(cornerRadius, 0.0f, cornerRadius, 0.0f);
     
@@ -99,8 +81,6 @@
 - (void)dealloc
 {
     [self jsq_removeTextViewNotificationObservers];
-    _placeHolder = nil;
-    _placeHolderTextColor = nil;
 }
 
 #pragma mark - Composer text view
@@ -156,6 +136,13 @@
 {
     [super setTextAlignment:textAlignment];
     [self setNeedsDisplay];
+}
+
+- (void)paste:(id)sender
+{
+    if (!self.pasteDelegate || [self.pasteDelegate composerTextView:self shouldPasteWithSender:sender]) {
+        [super paste:sender];
+    }
 }
 
 #pragma mark - Drawing

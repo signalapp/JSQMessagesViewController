@@ -145,4 +145,9 @@ typedef enum : NSUInteger {
                             date:(NSDate *)date
                            media:(id<JSQMessageMediaData>)media;
 
+/**
+ Not a valid initializer.
+ */
+- (id)init NS_UNAVAILABLE;
+
 @end

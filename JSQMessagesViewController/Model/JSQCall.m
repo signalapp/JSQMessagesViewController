@@ -18,7 +18,7 @@
               callerDisplayName:(NSString *)senderDisplayName
                            date:(NSDate *)date
                          status:(CallStatus)status
-                  displayString:(NSString *)detailString
+                  detailString:(NSString *)detailString
 {
     NSParameterAssert(senderId != nil);
     NSParameterAssert(senderDisplayName != nil);
@@ -38,7 +38,7 @@
 
 -(id)init
 {
-    NSAssert(NO,@"%s is not a valid initializer for %@. Use %@ instead", __PRETTY_FUNCTION__, [self class], NSStringFromSelector(@selector(initWithCallerId:callerDisplayName:date:status:displayString:)));
+    NSAssert(NO,@"%s is not a valid initializer for %@. Use %@ instead", __PRETTY_FUNCTION__, [self class], NSStringFromSelector(@selector(initWithCallerId:callerDisplayName:date:status:detailString:)));
     return nil;
 }
 
@@ -149,7 +149,7 @@
                                             callerDisplayName:self.senderDisplayName
                                                          date:self.date
                                                        status:self.status
-                                                displayString:self.detailString];
+                                                 detailString:self.detailString];
 }
 
 - (NSUInteger)messageHash{
