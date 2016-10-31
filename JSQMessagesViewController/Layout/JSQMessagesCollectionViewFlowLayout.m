@@ -43,7 +43,7 @@ const CGFloat kJSQMessagesCollectionViewAvatarSizeDefault = 30.0f;
 
 @property (strong, nonatomic) UIDynamicAnimator *dynamicAnimator;
 @property (strong, nonatomic) NSMutableSet *visibleIndexPaths;
-
+@property (strong, nonatomic) NSMutableDictionary *indexPathsDeletedInThisUpdate;
 @property (assign, nonatomic) CGFloat latestDelta;
 
 @end
@@ -82,6 +82,8 @@ const CGFloat kJSQMessagesCollectionViewAvatarSizeDefault = 30.0f;
     
     _springinessEnabled = NO;
     _springResistanceFactor = 1000;
+
+    _indexPathsDeletedInThisUpdate = [NSMutableDictionary new];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(jsq_didReceiveApplicationMemoryWarningNotification:)
@@ -381,7 +383,17 @@ const CGFloat kJSQMessagesCollectionViewAvatarSizeDefault = 30.0f;
                 [self.dynamicAnimator addBehavior:springBehaviour];
             }
         }
+
+        if (updateItem.updateAction == UICollectionUpdateActionDelete) {
+            self.indexPathsDeletedInThisUpdate[updateItem.indexPathBeforeUpdate] = updateItem;
+        }
     }];
+}
+
+- (void)finalizeCollectionViewUpdates
+{
+    [self.indexPathsDeletedInThisUpdate removeAllObjects];
+    [super finalizeCollectionViewUpdates];
 }
 
 #pragma mark - Invalidation utilities
@@ -404,6 +416,14 @@ const CGFloat kJSQMessagesCollectionViewAvatarSizeDefault = 30.0f;
 
 - (CGSize)messageBubbleSizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (self.indexPathsDeletedInThisUpdate[indexPath]) {
+        // Occasionally under heavy load we attempt to lay out items which were just deleted.
+        // Presumably this is some interstitial state, but it results in an explosion if we
+        // try to ask our data source for the deleted item.
+
+        // Returning CGSizeZero blows up an assertion down the line. This is a hack.
+        return CGSizeMake(1, 1);
+    }
     id<JSQMessageData> messageItem = [self.collectionView.dataSource collectionView:self.collectionView
                                                       messageDataForItemAtIndexPath:indexPath];
 
