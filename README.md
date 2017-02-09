@@ -1,3 +1,7 @@
+# Signal doesn't use this forked repository anymore
+
+We no longer use our own fork of JSQMVC, and this fork only exists now as historical documentation. If you want to make changes, do so upstream at https://github.com/jessesquires/JSQMessagesViewController
+
 ![JSQMessagesViewController banner](https://raw.githubusercontent.com/jessesquires/JSQMessagesViewController/develop/Assets/jsq_messages_banner.png)
 
 [![Build Status](https://secure.travis-ci.org/jessesquires/JSQMessagesViewController.svg)](http://travis-ci.org/jessesquires/JSQMessagesViewController) [![Version Status](http://img.shields.io/cocoapods/v/JSQMessagesViewController.png)][docsLink] [![license MIT](http://img.shields.io/badge/license-MIT-orange.png)][mitLink]
