@@ -130,7 +130,9 @@ typedef void (^JSQAnimationCompletionBlock)(BOOL finished);
     [self jsq_unregisterForNotifications];
 
     [self jsq_setKeyboardViewHidden:NO];
-    self.keyboardView = nil;
+    // No need to set keyboardView to nil here
+    // Plus we need it for future "dismiss keyboard" gesture recognition.
+    // self.keyboardView = nil;
 }
 
 #pragma mark - Notifications
