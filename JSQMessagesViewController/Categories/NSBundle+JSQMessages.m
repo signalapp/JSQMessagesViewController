@@ -36,7 +36,9 @@
 
 + (NSString *)jsq_localizedStringForKey:(NSString *)key
 {
-    return NSLocalizedStringFromTableInBundle(key, @"JSQMessages", [NSBundle jsq_messagesAssetBundle], nil);
+    // In Signal, we prefer to use our own translations to the incomplete translations in this bundle
+    // return NSLocalizedStringFromTableInBundle(key, @"JSQMessages", [NSBundle jsq_messagesAssetBundle], nil);
+    return NSLocalizedString(key, nil);
 }
 
 @end
