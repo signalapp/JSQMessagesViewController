@@ -1064,6 +1064,12 @@ JSQMessagesKeyboardControllerDelegate>
     UIEdgeInsets insets = UIEdgeInsetsMake(top, 0.0f, bottom, 0.0f);
     self.collectionView.contentInset = insets;
     self.collectionView.scrollIndicatorInsets = insets;
+    
+    // BEGIN SIGNAL HACK to fix crash when scrolling while popping or dismissing keyboard
+    // We should invalidate layout whenever the contentInsets change.
+    [self.collectionView.collectionViewLayout invalidateLayoutWithContext:[JSQMessagesCollectionViewFlowLayoutInvalidationContext context]];
+    [self.collectionView.collectionViewLayout invalidateLayout];
+    // END SIGNAL HACK to fix crash when scrolling while popping or dismissing keyboard
 }
 
 - (BOOL)jsq_isMenuVisible
