@@ -310,7 +310,53 @@ const CGFloat kJSQMessagesCollectionViewAvatarSizeDefault = 30.0f;
             [self jsq_configureMessageCellLayoutAttributes:attributesItem];
         }
         else {
-            attributesItem.zIndex = -1;
+            // BEGIN HACK for Signal to fix scrolling crash.
+            //
+            // Signature of crash looks like this:
+            //
+            //     0   CoreFoundation                	0x18cbe2fe0 __exceptionPreprocess + 124 (NSException.m:165)
+            //     1   libobjc.A.dylib               	0x18b644538 objc_exception_throw + 56 (objc-exception.mm:521)
+            //     2   CoreFoundation                	0x18cbe2eb4 +[NSException raise:format:arguments:] + 104 (NSException.m:131)
+            //     3   Foundation                    	0x18d67b760 -[NSAssertionHandler handleFailureInMethod:object:file:lineNumber:description:] + 112 (NSException.m:157)
+            //     4   UIKit                         	0x192d715c8 __45-[UICollectionViewData validateLayoutInRect:]_block_invoke + 1328 (UICollectionViewData.m:445)
+            //     5   UIKit                         	0x192d70ad4 -[UICollectionViewData validateLayoutInRect:] + 1496 (UICollectionViewData.m:559)
+            //     6   UIKit                         	0x193653184 -[UICollectionViewData layoutAttributesForCellsInRect:validateLayout:] + 148 (UICollectionViewData.m:885)
+            //     7   UIKit                         	0x19360f9f4 -[UICollectionView _computePrefetchCandidatesForVisibleBounds:futureVisibleBounds:prefetchVector:notifyDelegateIfNeeded:] + 132 (UICollectionView.m:2366)
+            //     8   UIKit                         	0x19360f954 -[UICollectionView _computePrefetchCandidatesForVelocity:notifyDelegateIfNeeded:] + 168 (UICollectionView.m:2361)
+            //     9   UIKit                         	0x19360f884 -[UICollectionView _prefetchItemsForVelocity:maxItemsToPrefetch:invalidateCandidatesOnDirectionChanges:] + 768 (UICollectionView.m:2308)
+            //     10  UIKit                         	0x192d701ac -[UICollectionView layoutSubviews] + 704 (UICollectionView.m:3586)
+            //
+            //
+            // Digging in a bit I can reliably reproduce the crash after ~10-30s of scrolling wildly while
+            // receiving messages (1/s). The failed assertion is:
+            //
+            // I verified that the problem goes away if we remove the "load earlier messages" supplemental view.
+            //
+            // For some reason, since prefetching was introduced in iOS10, this became more common.
+            //
+            // Another recent change in Signal wherein we're more aggressively invalidating our layout also made
+            // the occurrences of this crash jump.
+            //
+            // The actual assertion failure is like:
+            //
+            //     layout attributes for supplementary item at index path (<NSIndexPath: 0xc000000000000016> {length = 2, path = 0 - 0}) changed from <JSQMessagesCollectionViewLayoutAttributes: 0x10ab8e860> index path: (<NSIndexPath: 0xc000000000000016> {length = 2, path = 0 - 0}); element kind: (UICollectionElementKindSectionHeader); frame = (0 0; 375 32); zIndex = 10;  to <JSQMessagesCollectionViewLayoutAttributes: 0x10bc398f0> index path: (<NSIndexPath: 0xc000000000000016> {length = 2, path = 0 - 0}); element kind: (UICollectionElementKindSectionHeader); frame = (0 0; 375 32); zIndex = -1;  without invalidating the layout
+            //
+            // Note the zIndex "changed" from 10 -> -1. This is the only place we touch the zIndex.
+            //
+            // The  following line was introduced:
+            //
+            //     commit 2c39325220e63535bc1a79b2d471e6c2e9d3d2a4
+            //     Author: Jesse Squires <jesse.d.squires@gmail.com>
+            //     Date:   Mon Jul 21 23:08:17 2014 -0700
+            //
+            //     fix issue where header/footer failed to appear when springiness is enabled. close #409
+            //
+            // Since we're not using "springiness" we should be safe in disabling this.
+            
+            // (Here's the actual code being commented out)
+            // attributesItem.zIndex = -1;
+            
+            // END HACK for Signal to fix scrolling crash.
         }
     }];
     
