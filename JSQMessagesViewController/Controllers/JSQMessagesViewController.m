@@ -357,7 +357,13 @@ JSQMessagesKeyboardControllerDelegate>
 
 - (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
     [super traitCollectionDidChange:previousTraitCollection];
-    [self jsq_resetLayoutAndCaches];
+    
+    // Only reset layout and caches if traits have actually changed;
+    // this method is called with a nil argument when the view is
+    // initially presented.
+    if (previousTraitCollection) {
+        [self jsq_resetLayoutAndCaches];
+    }
 }
 
 - (void)jsq_resetLayoutAndCaches
