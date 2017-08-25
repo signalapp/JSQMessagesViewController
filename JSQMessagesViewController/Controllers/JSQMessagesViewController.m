@@ -278,15 +278,16 @@ JSQMessagesKeyboardControllerDelegate>
 
     [super viewWillAppear:animated];
     self.toolbarHeightConstraint.constant = self.inputToolbar.preferredDefaultHeight;
-    [self.view layoutIfNeeded];
-    [self.collectionView.collectionViewLayout invalidateLayout];
+    // Signal's message view will do this.
+//    [self.view layoutIfNeeded];
+//    [self.collectionView.collectionViewLayout invalidateLayout];
 
-    if (self.automaticallyScrollsToMostRecentMessage) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self scrollToBottomAnimated:NO];
-            [self.collectionView.collectionViewLayout invalidateLayoutWithContext:[JSQMessagesCollectionViewFlowLayoutInvalidationContext context]];
-        });
-    }
+//    if (self.automaticallyScrollsToMostRecentMessage) {
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self scrollToBottomAnimated:NO];
+//            [self.collectionView.collectionViewLayout invalidateLayoutWithContext:[JSQMessagesCollectionViewFlowLayoutInvalidationContext context]];
+//        });
+//    }
 
     [self jsq_updateKeyboardTriggerPoint];
 }
