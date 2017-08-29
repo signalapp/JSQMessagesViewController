@@ -269,17 +269,6 @@ JSQMessagesKeyboardControllerDelegate>
 
     [self jsq_configureMessagesViewController];
     [self jsq_registerForNotifications:YES];
-    
-    // Per https://twitter.com/steipete/status/219848151765483520?lang=en
-    // "Is there some trick to bring UINavigationController to not mess with a UIScrollView  (_adjustContentOffsetIfNecessary)?"
-    // "Add a dummy view as first subview. It won’t look further."
-    //
-    // This hack prevents UINavigationController from calling _adjustContentOffsetIfNecessary
-    // on the collection view after viewWillAppear: but before viewDidAppear:, which
-    // causes the scroll state to reset to zero.    
-    UIView *dummyView = [UIView new];
-    dummyView.hidden = YES;
-    [self.view insertSubview:dummyView atIndex:0];
 }
 
 - (void)viewWillAppear:(BOOL)animated
