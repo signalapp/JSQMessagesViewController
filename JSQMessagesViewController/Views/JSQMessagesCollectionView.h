@@ -26,12 +26,20 @@
 @class JSQMessagesTypingIndicatorFooterView;
 @class JSQMessagesLoadEarlierHeaderView;
 
+@protocol JSQLayoutDelegate <NSObject>
+
+- (void)jsqWillChangeLayout;
+- (void)jsqDidChangeLayout;
+
+@end
 
 /**
  *  The `JSQMessagesCollectionView` class manages an ordered collection of message data items and presents
  *  them using a specialized layout for messages.
  */
 @interface JSQMessagesCollectionView : UICollectionView <JSQMessagesCollectionViewCellDelegate>
+
+@property (weak, nonatomic) id<JSQLayoutDelegate> layoutDelegate;
 
 /**
  *  The object that provides the data for the collection view.

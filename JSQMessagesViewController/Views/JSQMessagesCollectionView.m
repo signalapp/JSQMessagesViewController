@@ -37,6 +37,28 @@
 
 @implementation JSQMessagesCollectionView
 
+- (void)setFrame:(CGRect)frame {
+    BOOL isChanging = !CGSizeEqualToSize(frame.size, self.frame.size);
+    if (isChanging) {
+        [self.layoutDelegate jsqWillChangeLayout];
+    }
+    [super setFrame:frame];
+    if (isChanging) {
+        [self.layoutDelegate jsqDidChangeLayout];
+    }
+}
+
+- (void)setBounds:(CGRect)bounds {
+    BOOL isChanging = !CGSizeEqualToSize(bounds.size, self.bounds.size);
+    if (isChanging) {
+        [self.layoutDelegate jsqWillChangeLayout];
+    }
+    [super setBounds:bounds];
+    if (isChanging) {
+        [self.layoutDelegate jsqDidChangeLayout];
+    }
+}
+
 - (void)setContentOffset:(CGPoint)contentOffset {
     if (self.contentSize.height < 1 &&
         CGPointEqualToPoint(CGPointZero, contentOffset)) {
