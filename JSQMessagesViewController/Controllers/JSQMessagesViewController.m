@@ -265,7 +265,9 @@ JSQMessagesKeyboardControllerDelegate>
 {
     [super viewDidLoad];
 
-    [[[self class] nib] instantiateWithOwner:self options:nil];
+    // OWS: We don't want to load the nib twice - this has a number of
+    // undesirable effects, such as instantiating two collection views. 
+//    [[[self class] nib] instantiateWithOwner:self options:nil];
 
     [self jsq_configureMessagesViewController];
     [self jsq_registerForNotifications:YES];
