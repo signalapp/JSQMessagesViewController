@@ -169,27 +169,29 @@ typedef void (^JSQAnimationCompletionBlock)(BOOL finished);
 
 - (void)jsq_didReceiveKeyboardDidShowNotification:(NSNotification *)notification
 {
-    UIView *keyboardViewProxy = self.textView.inputAccessoryView.superview;
-    if ([UIDevice jsq_isCurrentDeviceAfteriOS9]) {
-        NSPredicate *windowPredicate = [NSPredicate predicateWithFormat:@"self isMemberOfClass: %@", NSClassFromString(@"UIRemoteKeyboardWindow")];
-        UIWindow *keyboardWindow = [[UIApplication sharedApplication].windows filteredArrayUsingPredicate:windowPredicate].firstObject;
-
-        for (UIView *subview in keyboardWindow.subviews) {
-            for (UIView *hostview in subview.subviews) {
-                if ([hostview isMemberOfClass:NSClassFromString(@"UIInputSetHostView")]) {
-                    keyboardViewProxy = hostview;
-                    break;
-                }
-            }
-        }
-        self.keyboardView = keyboardViewProxy;
-    }
-
-    [self jsq_setKeyboardViewHidden:NO];
-
-    [self jsq_handleKeyboardNotification:notification completion:^(BOOL finished) {
-        [self.panGestureRecognizer addTarget:self action:@selector(jsq_handlePanGestureRecognizer:)];
-    }];
+    // FIXME SHARINGEXTENSION
+    // I actually don't think we're using this method anyway, but need to verify.
+//    UIView *keyboardViewProxy = self.textView.inputAccessoryView.superview;
+//    if ([UIDevice jsq_isCurrentDeviceAfteriOS9]) {
+//        NSPredicate *windowPredicate = [NSPredicate predicateWithFormat:@"self isMemberOfClass: %@", NSClassFromString(@"UIRemoteKeyboardWindow")];
+//        UIWindow *keyboardWindow = [[UIApplication sharedApplication].windows filteredArrayUsingPredicate:windowPredicate].firstObject;
+//
+//        for (UIView *subview in keyboardWindow.subviews) {
+//            for (UIView *hostview in subview.subviews) {
+//                if ([hostview isMemberOfClass:NSClassFromString(@"UIInputSetHostView")]) {
+//                    keyboardViewProxy = hostview;
+//                    break;
+//                }
+//            }
+//        }
+//        self.keyboardView = keyboardViewProxy;
+//    }
+//
+//    [self jsq_setKeyboardViewHidden:NO];
+//
+//    [self jsq_handleKeyboardNotification:notification completion:^(BOOL finished) {
+//        [self.panGestureRecognizer addTarget:self action:@selector(jsq_handlePanGestureRecognizer:)];
+//    }];
 }
 
 - (void)jsq_didReceiveKeyboardWillChangeFrameNotification:(NSNotification *)notification
@@ -317,9 +319,11 @@ typedef void (^JSQAnimationCompletionBlock)(BOOL finished);
 
     if ([UIDevice jsq_isCurrentDeviceBeforeiOS8]) {
         //  handle iOS 7 bug when rotating to landscape
-        if (UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation)) {
-            contextViewWindowHeight = CGRectGetWidth(self.contextView.window.frame);
-        }
+        // FIXME SHARING EXTENSIONS
+        // I don't think we're using this anyway, but for now... make it not explode.
+//        if (UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation)) {
+//            contextViewWindowHeight = CGRectGetWidth(self.contextView.window.frame);
+//        }
     }
 
     CGFloat keyboardViewHeight = CGRectGetHeight(self.keyboardView.frame);
